@@ -1,17 +1,18 @@
 Package: ACMQ
-Title: What the Package Does (One Line, Title Case)
+Title: Analyse Causale et Méthodes Quantitatives
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Vincent",
+           family = "Arel-Bundock",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+           email = "vincent.arel-bundock@umontreal.ca",
+           comment = c(ORCID = "0000-0003-2042-7063"))
+Description: Librairie qui accompagne le livre Analyse Causale et Méthodes Quantitatives
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
+    learnr,
     lme4,
     prediction,
     margins,
@@ -19,3 +20,5 @@ Imports:
     modelsummary,
     AER,
     tidyverse
+Suggests: 
+    learnr
