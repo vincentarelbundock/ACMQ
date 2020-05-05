@@ -1,5 +1,5 @@
 ---
-title: "Introduction à R"
+title: "ACMQ: Tutoriel R"
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---
@@ -9,66 +9,1012 @@ library(learnr)
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+## R
 
-## Topic 1
+`R` est un langage de programmation spécialisé dans l'analyse statistique et la visualisation de données. La première version de `R` a été publiée en 1995 par Ross Ihaka et Robert Gentleman, mais le langage s'inspire des travaux de John Chambers aux laboratoires Bell dans les années 1970. Aujourd'hui, `R` est un outil d'analyse statistique populaire, tant dans le secteur privé que dans le monde universitaire. Puisque le langage `R` est développé par des bénévoles, les logiciels qui y sont associés sont presque tous distribués gratuitement, en libre accès. 
 
-### Exercise 
+## Installation
 
-*Here's a simple exercise with an empty code chunk provided for entering the answer.*
+Pour analyser des données avec `R`, je vous recommande d'installer trois logiciels complémentaires. Premièrement, il est essentiel d'installer le langage de programmation et les outils de calcul de `R`. Ces outils peuvent être installés sur des ordinateurs Windows, Mac, ou Linux. Ils sont disponibles gratuitement sur le site web de l'organisation `R`: 
 
-Write the R code required to add two plus two:
+* <https://cran.r-project.org/>
 
-```{r two-plus-two, exercise=TRUE}
+Deuxièmement, les utilisateurs Windows voudront installer `Rtools`. Ce logiciel permet d'installer des fonctions statistiques additionnelles: 
+
+* <https://cran.r-project.org/bin/windows/Rtools/>
+
+Troisièmement, il est utile d'installer l'interface graphique `RStudio`. Ce logiciel est développé par une compagnie privée qui rend disponible une version gratuite en libre accès:
+
+* <https://www.rstudio.com>
+
+## Interface graphique
+
+Le Graphique \ref{fig:rstudio} montre une capture d'écran de `RStudio`. L'analyste peut analyser ses données en mode interactif dans la "Console", en cliquant sur la fenêtre en bas à gauche, et en y tapant ses commandes suivies par la touche "Entrée."
+
+```{r rstudio, echo=FALSE, fig.cap='Interface graphique du logiciel RStudio.', out.width='100%'}
+knitr::include_graphics('https://github.com/vincentarelbundock/ACMQ/raw/master/inst/tutorials/R/data/rstudio.png')
+```
+
+Lorsque l'analyste veut exécuter plus qu'une ou deux commandes, il est préférable d'écrire celles-ci dans l'éditeur de texte qui se trouve dans la fenêtre en haut à gauche. À partir de cet éditeur, l'analyste peut cliquer sur l'icône "Run" (ou taper Ctrl-Entrée) pour exécuter ses commandes. Les résultats apparaitront dans la fenêtre en bas à gauche. L'avantage de l'éditeur de texte est qu'il nous permet de sauvegarder nos commandes, et de reproduire facilement des analyses complexes.
+
+`RStudio` offre plusieurs fonctions pratiques. Par exemple, il montre la liste des variables et des objets dans la fenêtre en haut à droite. Les graphiques apparaissent en bas à droite. `RStudio` offre aussi des menus déroulants et des icônes qui permettent facilement d'importer ou de sauver des données, d'installer de nouvelles librairies, etc.
+
+## Manuel d'instruction
+
+Chaque commande du langage `R` est accompagnée d'un manuel d'instruction. Pour consulter ce document de référence, il faut écrire le nom de la commande précédée d'un point d'interrogation. Par exemple, taper la commande suivante dans la console fait apparaître le manuel copié dans le Graphique \ref{fig:ifelse}:
+
+```{r manual, exercise=TRUE}
+?ifelse
+```
+
+\begin{figure}
+\caption{Extrait du manuel d'instruction pour la fonction \texttt{ifelse}.\label{fig:ifelse}}
+\begin{framed}
+\includegraphics[width=\textwidth]{figure/ifelse.png}
+\end{framed}
+\end{figure}
+
+## Librairies externes
+
+Le plus grand avantage du logiciel en libre accès `R`, est qu'une vaste communauté scientifique développe des logiciels en libre accès pour bonifier les fonctions de base du langage. Les utilisateurs peuvent facilement télécharger ces librairies, et ainsi bénéficier des outils spécialisés créés par des milliers de programmeurs bénévoles.
+
+Par exemple, la librairie `ggplot2` dessine de superbes graphiques statistiques, et `gganimate` met ces graphiques en mouvement; `haven` lit plusieurs types de bases de données, dont celles produites par les logiciels Stata, SPSS, et SAS; `quanteda` facilite l'analyse quantitative de textes; et `modelsummary` produit de beaux tableaux pour résumer plusieurs modèles statistiques côte-à-côte; `skimr` produit d'utiles résumés des données. Plusieurs librairies permettent de télécharger facilement des données, dont `quantmod` pour les données financières, `WDI` pour les données de la banque mondiale, et `rvest` pour les données qui doivent être moissonnées à partir du web. `R` a aussi de nombreuses librairies pour analyser les données spatiales, pour faire de l'analyse de réseau, de la cartographie, etc.
+
+Pour télécharger et installer ces librairies, il faut utiliser la fonction `install.packages`. Dans le contexte de ce livre, nous utiliserons cinq librairies, en plus des commandes de base. 
+
+Vous pouvez maintenant installer les librairies nécessaires pour compléter le livre ACMQ en copiant le code suivant dans la fenêtre "Console" de `RStudio`. Cette opération peut prendre quelques minutes:
+
+```{r, eval=FALSE, echo=TRUE}
+install.packages('tidyverse')
+install.packages('prediction')
+install.packages('margins')
+install.packages('mediation')
+install.packages('lme4')
+```
+
+Pour activer une librairie et gagner accès à ses fonctions et commandes, il faut exécuter la commande `library`:
+
+```{r, eval=FALSE, echo=TRUE}
+library('tidyverse')
+library('prediction')
+library('margins')
+library('mediation')
+library('lme4')
+```
+
+Lorsque les librairies ont été installées une fois, elles le reste. Il est donc inutile de réinstaller une librairie à chaque séance de travail. Par contre, à chaque fois que vous ouvrez `R`, il faudra à nouveau activer les librairies dont vous avez besoin avec la commande `library`.
+
+## Importer des données
+
+Avant d'importer des données dans `R`, nous devons dire au logiciel dans quel dossier nous désirons travailler sur le disque dur. C'est là où `R` cherchera les banques de données existantes, et c'est là où `R` sauvegardera nos nouveaux résultats.
+
+Pour connaître le dossier de travail actuel, tapez:
+
+```{r, eval=FALSE}
+getwd()
+```
+
+Pour fixer le dossier de travail, il faut utiliser la commande `setwd`. Par exemple, si les banques de données avec lesquelles nous voulons travailler ont été sauvegardées sur le "bureau" d'un ordinateur Apple, la commande ressemblerait à:
+
+```{r, eval = FALSE}
+setwd("/Users/arelbundock/Desktop")
+```
+
+Sur un ordinateur Windows, la commande serait plutôt:
+
+```{r, eval = FALSE}
+setwd("C:/Users/arelbundock/Desktop")
+```
+
+Dans les commandes ci-haut, il est important de noter l'utilisation précise des guillemets et des barres obliques penchées vers l'avant. Évidemment, chaque utilisateur devra modifier les chemins de fichier pour pointer vers l'endroit approprié sur son disque dur.
+
+Il existe plusieurs types de fichiers pour sauvegarder et partager les bases de données. `R` peut lire la plupart d'entre eux. Le menu déroulant de `RStudio` permet de lire plusieurs types de banque de données en mémoire automatiquement. Il est aussi possible de lire les données manuellement avec les commandes de base du logiciel `R` (e.g., `read.csv`), ou avec la commande `import` de la librairie `rio`, qui permet d'importer facilement des données sauvegardées dans plus de 30 formats différents.
+
+Un des formats de sauvegarde les plus populaires est le CSV, un fichier texte bien adapté pour les bases de données de petite à moyenne taille (e.g., moins de 1 000 000 de rangées). Le fichier `titanic.csv` contient des informations sur les passagers à bord du Titanic lors de son dernier voyage. Pour lire cette banque de données et la transformer en data frame, nous utilisons la fonction `read.csv`:
+
+```{r, eval = FALSE, echo=TRUE}
+url <- 'https://raw.githubusercontent.com/vincentarelbundock/ACMQ/master/inst/tutorials/R/data/titanic.csv'
+titanic <- read.csv(url)
+head(titanic)
+```
+
+## Types de données 
+
+`R` reconnait différents types de données. Pour nos besoins, il suffit de considérer les données numériques, texte,  logique, et les valeurs manquantes.
+
+### Numérique 
+
+Pour entrer une valeur *numérique*, il suffit de la taper dans la console:
+
+```{r echo=TRUE}
+4.35
+```
+
+`R` peut opérer sur des objets numériques comme une calculatrice ultra-puissante:
+
+```{r echo=TRUE}
+2 + 1
+
+3 * 2993
+
+4 / 10
+
+6 ^ 2
+```
+
+Lorsqu'une valeur numérique est très grosse ou très petite, `R` l'imprimera souvent en notation scientifique:
+
+```{r echo=TRUE}
+100000
+
+0.00001
+```
+
+### Texte
+
+Pour entrer des caractères, il faut les encadrer de guillemets:
+
+```{r echo=TRUE}
+"ceci est un texte"
+```
+
+
+### Logique
+
+Un objet logique (ou "booléen") prend seulement deux valeurs: `TRUE` / `FALSE`. L'objet logique sera particulièrement utile pour comparer des données numériques (section \ref{sec:r-comparaisons}).
+
+```{r echo=TRUE}
+TRUE
+```
+
+### Valeurs manquantes
+
+Finalement, `R` représente toute *valeur manquante* par le symbole `NA`:
+
+```{r echo=TRUE}
+NA
+```
+
+Les erreurs manquantes se "propagent" à travers les opérations mathématiques. Par exemple, la somme d'un nombre et d'une valeur inconnue est aussi inconnue:
+
+```{r echo=TRUE}
+3 + NA
+```
+
+
+## Types de données : Exercices
+
+Calculez la somme de 456 + 23 avec `R`:
+```{r somme, exercise=TRUE}
 
 ```
 
-### Exercise with Code
+```{r somme-solution}
+456 + 23
+```
 
-*Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.*
+Divisez 9 par `NA`, quel sera le résultat à vos avis? 
 
-Now write a function that adds any two numbers and then call it:
+```{r manquante, exercise=TRUE}
 
-```{r add-function, exercise=TRUE, exercise.lines = 5}
-add <- function() {
-  
+```
+
+```{r manquante-solution}
+9/NA 
+```
+
+## Variables
+
+Le symbole `<-` permet d'assigner des objets à des "variables." Nous pouvons ensuite appliquer des opérations à ces variables:
+
+```{r echo=TRUE}
+z <- 'texte arbitraire'
+z
+
+x <- 9
+y <- 7
+
+x
+
+x + y
+```
+
+
+
+## Variables : Exercices
+
+Remplacez les valeurs de x par 6, y par 3 et z par 9 et calculer la somme des valeurs:
+
+```{r variable, exercise=TRUE}
+
+```
+
+```{r variable-solution}
+x <- 6
+y <- 3
+z <- 9
+
+x + y + z
+```
+
+## Vecteurs
+
+Un vecteur est une série de données d'un seul et même type. Pour créer un vecteur, nous utilisons la fonction `c`. Nous pouvons créer des vecteurs numérique, caractère, logique, ou autre:
+
+```{r echo=TRUE}
+c(1, 2, 3) 
+c('a', 'ab')
+c(TRUE, TRUE, FALSE)
+```
+
+Notez que si nous tentons de mélanger les types, `R` uniformisera toutes nos données automatiquement. Ici, tout devient caractère:
+
+```{r echo=TRUE}
+c('a', 1, 3)
+```
+
+Les vecteurs mixtes sont proscrits, mais un vecteur peut inclure des valeurs manquantes:
+
+```{r echo=TRUE}
+c(1, 2, NA, 4)
+```
+
+Nous pouvons sélectionner des données individuelles au sein des vecteurs en utilisant les crochets `[]`:
+
+```{r echo=TRUE}
+x <- c(75, 18, 35, 39)
+
+x[2]
+
+x[c(1, 4)]
+```
+
+Les éléments d'un vecteur peuvent être nommés afin de faciliter l'extraction de valeurs précises par crochets. Pour créer un vecteur aux éléments nommés, nous utilisons la commande `c` et le signe `=`:
+
+```{r echo=TRUE}
+x <- c('Premier' = 1, 'Deuxième' = 2, 'Troisième' = 3)
+x['Deuxième']
+```
+
+Nous pouvons aussi appliquer des opérations mathématiques à des vecteurs entiers:
+
+```{r echo=TRUE}
+x <- c(1, 2, 3, 4)
+y <- c(6, 7, NA, 9)
+
+x / 2
+
+x + y
+```
+
+La commande `length` donne le nombre d'éléments dans un vecteur:
+
+```{r echo=TRUE}
+length(x)
+```
+
+La fonction `vector` permet de créer un vecteur vide:
+
+```{r echo=TRUE}
+x <- vector()
+```
+
+Puisque le vecteur est vide, sa longeur est:
+
+```{r}
+length(x)
+```
+
+Nous pouvons assigner des valeurs à ce vecteur grâce aux crochets:
+
+```{r echo=TRUE}
+x[1] <- pi
+x[2] <- NA
+x[3] <- 10
+x
+```
+
+Les deux-points sont pratiques pour créer des vecteurs de nombres entiers consécutifs:
+
+```{r echo=TRUE}
+1:3
+4:8
+```
+
+
+
+## Vecteurs : Exercices
+
+Ce vecteur représente la consommation de viandes en kg par an de cinq personnes:
+
+```{r consommation, exercise=TRUE}
+viandkg_an <- c(34.5, 37, 46, 52, 55.7)
+viandkg_an
+```
+
+```{r}
+viandkg_an <- c(34.5, 37, 46, 52, 55.7)
+viandkg_an
+```
+
+
+Calculez le nombre d'éléments que contient le vecteur `viandkg_an`:
+```{r lenght, exercise=TRUE}
+
+```
+
+```{r lenght-solution}
+length(viandkg_an)
+```
+
+Nommez chaque élément du vecteur `viandkg_an`:
+
+```{r name, exercise=TRUE}
+
+```
+
+```{r name-solution}
+viandkg_an <- c('Oli'= 34.5, 'Paul'= 37, 'Claude'= 46, 'Chris'= 52, 'Stef'= 55.7)
+viandkg_an
+```
+
+Calculez la moyenne de `viandkg_an`:
+
+```{r moyenne, exercise=TRUE}
+
+```
+
+```{r moyenne-solution}
+mean(viandkg_an)
+
+```
+
+20 à 30% de la production totale de nourriture est gaspillée selon le GIEC en 2018. Nous suggérons alors que chaque personne devrait diviser par deux sa consommation de viandes par an, si c'était le cas, quelle serait leur consommation de viandes en kilogramme par an? on appelera le nouveau vecteur : `sug_viandkg_an`
+
+```{r suggestion, exercise=TRUE}
+
+```
+
+```{r suggestion-solution}
+sug_viandkg_an <- viandkg_an / 2
+sug_viandkg_an
+```
+
+Remplacez la valeur des trois premières personnes par `NA` et celle de la dernière personne par 25 dans le vecteur `viandkg_an`:
+
+```{r valeur, exercise=TRUE}
+
+```
+
+```{r valeur-solution}
+viandkg_an[1:3] <- NA
+viandkg_an[5] <-  25
+viandkg_an
+```
+
+## Fonctions
+
+Une fonction est un mot réservé par `R` pour appliquer une certaine opération à un objet. Par exemple, la fonction `log` calcule le logarithme d'un nombre:
+
+```{r, echo=TRUE}
+log(5)
+```
+
+Le résultat de certaines fonctions peut être modifié en employant des "arguments." Par défaut, la fonction `log` calcule le logarithme naturel, c'est-à-dire le logarithme à base $e$. En modifiant l'argument `base`, nous pouvons calculer $\log_e (15), \log_2 (15), \log_{10} (15)$, 
+
+```{r echo=TRUE}
+log(15)
+
+log(15, base = 2)
+
+log(15, base = 10)
+```
+
+R inclut plusieurs fonctions qui permettent de calculer les statistiques les plus communes, dont la moyenne (`mean`), la médiane (`median`), la variance (`var`), l'écart type (`sd`), la somme (`sum`), le minimum et le maximum (`min`, `max`), la covariance (`cov`), et la corrélation (`cor`). Par exemple,
+
+```{r echo=TRUE}
+x <- c(-1, 3, 5, 1, 5, 6, 7, 10)
+y <- c(-3, 4, 7, 0, 8, 9, 0, 14)
+
+mean(x) 
+
+sd(x) 
+
+min(x)
+
+cor(x, y)
+```
+
+Lorsque nos vecteurs comprennent des valeurs manquantes `NA`, les fonctions statistiques refusent parfois de produire un résultat. Ces fonctions ont des arguments spéciques pour dire à `R` comment traiter les valeurs manquantes (consultez le manuel avec `?`):
+
+Remarque : Une valeur manquante `NA` n'est pas un objet mathématique bien défini; il n'existe pas de méthode unique ou strictement correcte de calculer la moyenne (ou autre statistique) d'un ensemble qui comporte des valeurs manquantes. Par conséquent, `R` est prudent et demande à l'analyste de spécifier explicitement comment traiter les valeurs manquantes.
+
+```{r echo=TRUE}
+x <- c(-1, NA, 5, 1, 5, 6, 7, 10)
+y <- c(-3, 4, 7, 0, 8, 9, 0, 14)
+
+mean(x)
+
+mean(x, na.rm = TRUE)
+
+cor(x, y)
+
+cor(x, y, use = 'complete.obs')
+```
+
+Des fonctions qui seront utiles dans plusieurs chapitres sont celles qui génèrent des données aléatoires. Par exemple, la fonction suivante pige 5 nombres aléatoires dans un distribution normale (voir chapitre \ref{sec:probabilite}):
+
+```{r}
+rnorm(5)
+```
+
+La fonction suivante pige 3 nombres aléatoires dans une distribution uniforme:
+
+```{r}
+runif(3)
+```
+
+<!--
+L'analyste peut aussi créer ses propres fonctions. Par exemple, imaginez qu'il veuille calculer le carré de la différence entre deux chiffres: $(a-b)^2$. Pour ce faire, il pourrait utiliser le code suivant:
+
+```{r, echo=TRUE}
+différence_au_carré <- function(arg1, arg2) {
+    résultat <- (arg1 - arg2)^2
+    return(résultat)
 }
 ```
 
-## Topic 2
+Dans le code ci-haut, les variables `arg1` et `arg2` sont des arguments que l'utilisateur devra spécifier manuellement. La commande `return` indique quel objet devrait être retourné à l'utilisateur. La nouvelle fonction que nous avons définie produit les résultats attendus:
 
-### Exercise with Hint
+```{r, echo=TRUE}
+différence_au_carré(2, 4)
 
-*Here's an exercise where the chunk is pre-evaulated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
+différence_au_carré(4, 2)
 
-Modify the following code to limit the number of rows printed to 5:
+différence_au_carré(1, 6)
+```
+-->
 
-```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
-mtcars
+## Fonctions : Exercices 
+Voici la base de donnée `uscereal`: 
+
+```{r context="data"}
+url <- 'https://raw.githubusercontent.com/vincentarelbundock/ACMQ/master/inst/tutorials/R/data/UScereal.csv'
+uscereal <- read.csv(url)
+uscereal
 ```
 
-```{r print-limit-hint}
-head(mtcars)
+Calculez la moyenne et l'écart type de la variable `protein`. 
+Puis calculez la somme et le maximum de `sodium`. 
+
+```{r prosod, exercise=TRUE}
+x <- c(uscereal$protein)
+y <- c(uscereal$sodium)
+
 ```
 
-### Quiz
+```{r prosod-solution, results='markup'}
+x <- c(uscereal$protein)
+y <- c(uscereal$sodium)
 
-*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
+mean(x)
+sd(x)
 
-Some questions to verify that you understand the purposes of various base and recommended R packages:
+sum(y)
+max(y)
+```
 
-```{r quiz}
-quiz(
-  question("Which package contains functions for installing other R packages?",
-    answer("base"),
-    answer("tools"),
-    answer("utils", correct = TRUE),
-    answer("codetools")
-  ),
-  question("Which of the R packages listed below are used to create plots?",
-    answer("lattice", correct = TRUE),
-    answer("tools"),
-    answer("stats"),
-    answer("grid", correct = TRUE)
-  )
-)
+Calculez maintenant la corrélation entre la variable `protein`et `sodium`: 
+```{r correlation, exercise=TRUE}
+x <- c(uscereal$protein)
+y <- c(uscereal$sodium)
+```
+
+```{R correlation-solution}
+x <- c(uscereal$protein)
+y <- c(uscereal$sodium)
+cor(x, y)
+```
+
+## Data frame
+
+Un "data frame" est une collection de vecteurs. Ensemble, ces vecteurs forment une banque de données organisée en rangées et en colonnes, comme un tableur Microsoft Excel. Puisque les données dans une colonne correspondent à un vecteur, elles doivent toutes être du même type. Cependant, différentes colonnes peuvent contenir différents types de données.
+
+Nous pouvons utiliser la fonction `data.frame` pour combiner plusieurs vecteurs en un seul data frame:
+
+```{r echo=TRUE}
+Lettre <- c('a', 'b', 'c', 'd', 'e', 'f', 'g')
+Nombre <- c(1, 2, 3, 4, 5, 6, 7)
+Logique <- c(TRUE, FALSE, TRUE, TRUE, TRUE, FALSE, TRUE)
+dat <- data.frame(Lettre, Nombre, Logique)
+```
+
+Pour examiner un data frame, il suffit de taper son nom dans la console:
+
+```{r echo=TRUE}
+dat
+```
+
+Pour voir les premières (ou dernières) rangées de la banque de données, on peut utiliser la commande `head` (ou `tail`). Par exemple, la commande suivante rend les trois premières rangées:
+
+```{r echo=TRUE}
+head(dat, n = 3)
+```
+
+L'interface `RStudio` permet aussi de visualiser les données dans un environnement graphique interactif, en tapant:
+
+```{r, eval=FALSE, echo=TRUE}
+View(dat)
+```
+
+La fonction `dim` indique que cette banque de données a `r nrow(dat)` rangées et `r ncol(dat)` colonnes:
+
+```{r echo=TRUE}
+dim(dat)
+```
+
+La fonction `colnames` donne les noms de colonnes:
+
+```{r echo=TRUE}
+colnames(dat)
+```
+
+La notation `dat[,]` permet d'extraire des colonnes ou des rangées d'un data frame. Un chiffre ou un vecteur placé *avant* la virgule choisit les rangées:
+
+```{r echo=TRUE}
+dat[1, ]
+
+dat[c(1, 3, 4), ]
+```
+
+Un chiffre ou un vecteur placé *après* la virgule choisit les colonnes:
+
+```{r echo=TRUE}
+dat[, 1]
+
+dat[, c(2, 3)]
+```
+
+Une façon alternative d'extraire une colonne est d'employer le symbole \$:
+
+```{r echo=TRUE}
+dat$Nombre
+```
+
+Grâce à ce symbole, il est possible d'appliquer des fonctions directement à une colonne. Par exemple, nous pouvons calculer la médiane de la colonne "Nombre," ou la fréquence des différentes valeurs de la variable "Logique":
+
+```{r echo=TRUE}
+median(dat$Nombre)
+
+table(dat$Logique)
+```
+
+Ce symbole nous permet aussi de créer de nouvelles variables:
+
+```{r echo=TRUE}
+dat$Nombre2 <- dat$Nombre^2
+
+dat
+```
+
+Pour éliminer une variable, nous lui assignons la valeur `NULL`:
+
+```{r echo=TRUE}
+dat$Nombre2 <- NULL
+
+dat
+```
+
+
+<!--
+## Autres structures
+
+Facteurs
+
+Listes
+-->
+
+
+## Data Frame : Exercices
+
+En utilisant toujours la même base de donnée : `uscereal`,
+
+```{r context="data"}
+url <- 'https://raw.githubusercontent.com/vincentarelbundock/ACMQ/master/inst/tutorials/R/data/UScereal.csv'
+uscereal <- read.csv(url)
+uscereal
+```
+
+Extrayez les cinq premières rangées :
+
+```{r rangee, exercise=TRUE}
+# N'oubliez pas qu'un chiffre ou un vecteur placé avant la virgule choisit les rangées.
+```
+
+```{r rangee-solution}
+uscereal[c(1:5), ]
+```
+
+Calculez le nombre de colonnes et de rangées du data frame `uscereal`?
+
+```{r colran, exercise=TRUE}
+
+```
+
+```{r colran-solution}
+dim(uscereal)
+```
+
+Extrayez la colonne `potassium` et calculez sa médiane en utilisant le symbole `$` : 
+
+```{r colonnes, exercise=TRUE}
+# Pour cette exercice, le symbole $ nous permet d'extraire une colonne dans un data frame.
+```
+
+```{r colonnes-solution}
+uscereal$potassium
+median(uscereal$potassium)
+
+```
+
+Extrayez les rangées *Life*, *Lucky Charms*, *Special K* : 
+
+```{r marques, exercise=TRUE}
+# N'oubliez pas qu'un chiffre ou un vecteur placé avant la virgule choisit les rangées.
+```
+
+```{r marques-solution}
+uscereal[c(38, 39, 57), ]
+
+```
+
+## Combiner les data frames
+
+Pour combiner deux data frames, un à la suite de l'autre, on peut utiliser la fonction `rbind`:
+
+```{r echo=TRUE}
+a <- data.frame('a' = 1:2, 'b' = 4:5)
+b <- data.frame('a' = 11:12, 'b' = 14:15)
+rbind(a, b)
+```
+
+Pour combiner des données provenant de différentes sources, nous pouvons utiliser les fonctions `join` du `tidyverse`. Par exemple, considérez deux data.frames qui contiennent de l'information sur la population (en millions) et le PIB par habitant (en milliers) pour quelques pays:
+
+
+```{r echo=TRUE}
+pop <- data.frame('pays' = c('Nigeria', 'Canada', 'Mexique'),
+                  'pop' = c(196, 37, 126))
+pib <- data.frame('pays' = c('Nigeria', 'Canada', 'Algérie'),
+                  'pib' = c(2, 46, 4))
+pop
+
+pib
+```
+
+Puisque les deux data.frames comprennent une colonne commune (`pays`), nous pouvons les combiner à l'aide des fonctions `left_join`, `right_join` ou `full_join`. Par contre, puisque les bases de données contiennent de l'information sur différents pays (Nigeria pour la population, mais Algérie pour le PIB), les résultats de ces trois commandes seront légèrement différents:
+
+```{r echo=TRUE, warning=FALSE}
+library(tidyverse)
+left_join(pop, pib)
+
+right_join(pop, pib)
+
+full_join(pop, pib)
+```
+
+Notez que `R` a inséré le symbole `NA` où les données sont manquantes.
+
+## Comparaisons
+
+\label{sec:r-comparaisons}
+
+R nous permet de vérifier si certaines conditions sont vraies, à l'aide des symboles `<`, `>`, `<=`, `>=`, `==`, `%in%`:
+
+```{r echo=TRUE}
+x <- c(10, 11, 12)
+y <- c(1, 2, 3)
+
+y >= 2
+
+x / y < 5
+
+x - y == 9 
+```
+
+Dans cette dernière comparaison, il faut noter que nous avons utilisé un double signe d'égalité: `==`. Dans `R`, un simple `=` est pour assigner la valeur d'une variable (équivalent à `<-`), ou la valeur de l'argument d'une fonction (comme dans `log(2, base = 3)`). Lorsque nous voulons comparer l'égalité de deux nombres, il faut utiliser `==`.
+
+L'opérateur `%in%` vérifie si un vecteur contient une valeur donnée:
+
+```{r echo=TRUE}
+2 %in% c(1, 3, 7)
+
+'blanc' %in% c('bleu', 'blanc', 'rouge')
+```
+
+Nous pouvons combiner les comparaisons à l'aide de parenthèses et des symboles `&` (qui signifie "et") et `|` (qui signifie "ou"):
+
+```{r echo=TRUE}
+x <- 3
+y <- 10
+
+(x > 2) & (y >= 11)
+
+(x > 5) | (x + y == 13)
+```
+
+Les comparaisons sont utiles, surtout en combinaison avec la fonction `ifelse`. Cette fonction prend trois arguments: (1) *test* -- une comparaison; (2) *yes* -- la valeur à retourner si la comparaison produit le logique `TRUE`; (3) *no* -- la valeur à retourner si la comparaison produit le logique `FALSE`.
+
+Pour illustrer, considérons la colonne `Nombre` du data frame `dat`:
+
+```{r echo=TRUE}
+dat$Nombre
+```
+
+`ifelse` peut produire plusieurs résultats intéressants:
+
+```{r echo=TRUE}
+ifelse(dat$Nombre < 4, 'Succès', 'Échec')
+
+ifelse(dat$Nombre < 4, dat$Nombre, NA)
+
+ifelse(dat$Nombre^2 > 48, 1000, dat$Nombre)
+```
+
+Comme nous le verrons plus bas, ce type de transformation est utile pour préparer les données pour l'analyse statistique.
+
+
+## Comparaisons : Exercices 
+
+Montrez quelles sont les céréales qui contiennent 260 calories ou plus dans le data frame `uscereal`. Indiquez en `NA`  celles qui contiennent moins de 260 calories.
+
+```{r context="data"}
+url <- 'https://raw.githubusercontent.com/vincentarelbundock/ACMQ/master/inst/tutorials/R/data/UScereal.csv'
+uscereal <- read.csv(url)
+uscereal
+```
+
+En utilisant la fonction `ifelse`, indiquez les cérérales qui contiennent 260 calories et plus dans le data frame `uscereal`. Veuillez indiquer `NA` pour celles qui contiennent moins de 260.
+```{r superieur, exercise=TRUE}
+# Utilisez le symbole $ pour selectionner la colonne "calories".
+```
+
+```{r superieur-solution}
+ifelse(uscereal$calories >= 260, uscereal$calories, NA)
+```
+
+
+## Le `tidyverse`
+
+Lorsqu'un utilisateur installe la librairie `tidyverse`, `R` installe automatiquement une longue liste d'autres librairies utiles. Celles-ci sont unies par le design et la philosophie développés par le statisticien Hadley Wickham. Le `tidyverse` offre un large éventail de fonctions. Pour ce livre, il suffit d'en considérer sept: `%>%`, `select`, `filter`, `arrange`, `mutate`, `summarize`, et `group_by`.
+
+
+### Chaîne d'opérations: *`%>%`*
+
+`%>%` est une expression programmatique spéciale offerte par la librairie `tidyverse`. Cette commande se lit "ensuite", et permet d'*envoyer* un objet à une fonction. Par exemple, la commande suivante se lit "81 *ensuite* racine carrée". Nous prenons d'abord le chiffre "81", et nous l'envoyer à la fonction `sqrt`, qui prend la racine carré du chiffre qu'elle a reçu:
+
+```{r echo=TRUE}
+81 %>% sqrt
+```
+
+L'avantage du symbole `%>%` est qu'il nous permet d'enchaîner plusieurs fonctions les unes après les autres:
+```{r echo=TRUE}
+81 %>% sqrt %>% log
+```
+
+L'opérateur de chaîne `%>%` peut aussi opérer sur des variables, des vecteurs ou des data.frame. Par exemple,
+
+```{r echo=TRUE}
+x <- c(4, 9, 16)
+x %>% sqrt
+```
+
+Les commandes ci-haut calculent le résultat, mais ne modifient pas la variable initiale:
+
+```{r echo=TRUE}
+x
+```
+
+Si l'analyste veut modifier une variable (ou un data.frame) à l'aide de l'opérateur `%>%`, il doit assigner la variable de nouveau. Par exemple,
+
+```{r echo=TRUE}
+x <- x %>% sqrt
+x
+```
+
+
+<!--
+Maintenant, imaginez que l'analyste s'intéresse aux colonnes "Lettre" et "Logique", mais seulement pour les observations où "Nombre" est plus petit que 5:
+
+```{r}
+dat %>% select(Lettre, Logique) %>%
+        filter(Nombre < 5)
+```
+
+Ou imaginez que l'analyste s'intéresse à la moyenne de la variable "Nombre" pour les observations ou "Logique" est faux:
+
+```{r}
+dat %>% filter(Logique == FALSE) %>% 
+        summarize(Nombre_Moyenne = mean(Nombre))
+```
+-->
+### Choix de colonnes -- *`select`*
+
+La fonction `select` sert à choisir et à renommer les colonnes qui nous intéressent:
+
+```{r echo=TRUE}
+dat %>% select(Nombre, 
+               Logique_Nouveau_Nom = Logique)
+```
+
+Notez qu'avec les fonctions du `tidyverse`, il est inutile d'employer le signe `$` pour identifier les colonnes sur lesquelles on veut travailler. L'exemple ci-haut fait référence directement aux variables `Nombre` et `Logique`, et non à `dat$Nombre` et `dat$Logique`.
+
+### Choix de rangées -- *`filter`*
+
+La fonction `filter` sert à choisir les rangées qui nous intéressent:
+
+```{r echo=TRUE}
+dat %>% filter(Lettre == 'a')
+
+dat %>% filter((Nombre < 4) & (Logique == TRUE))
+
+dat %>% filter((Nombre > 6) | (Lettre == 'b'))
+```
+
+### Classer la banque de données -- *`arrange`*
+
+La commande `arrange` sert à classer un data frame. D'abord, nous organisons la banque de données en fonction de la variable "Logique":
+
+```{r}
+dat %>% arrange(Logique)
+```
+
+Ensuite, nous classons la banque de données en ordre *inversé* de nombre, avec le symbole "-":
+
+```{r}
+dat %>% arrange(-Nombre)
+```
+
+### Créer ou modifier une variable -- *`mutate`*
+
+La commande `mutate` sert à créer ou à modifier une variable. Ici, nous créons deux nouvelles variables:
+
+```{r}
+dat %>% mutate(X1 = Nombre^2 + 3,
+               X2 = ifelse(Logique, Nombre, NA))
+```
+
+### Résumer une variables -- *`summarize`*
+
+La fonction `summarize` permet d'appliquer des fonctions aux colonnes de la banque de données. Chaque fonction doit retourner un seul chiffre. Par exemple:
+
+```{r}
+dat %>% summarize(moyenne_nombre = mean(Nombre))
+
+```
+
+Nous pouvons aussi utiliser la fonction `summarize` pour résumer plusieurs colonnes à la fois:
+
+```{r}
+dat %>% summarize(Nombre_Carré_Moyenne = mean(Nombre^2),
+                  Nombre_Plus_5_Variance = var(Nombre + 5),
+                  N_Vrais = sum(Logique))
+```
+
+
+### Analyse en sous-groupes: *`group_by`*
+
+La fonction `group_by` nous permet de faire des analyses en sous-groupes facilement. Par exemple, si nous nous intéressons à la moyenne et à la variance de la variable "Nombre" en fonction des différentes valeurs de la variable "Logique", il suffit d'exécuter les commandes suivantes:
+
+```{r}
+dat %>% group_by(Logique) %>%
+        summarize(Nombre_Moyenne = mean(Nombre),
+                  Nombre_Variance = var(Nombre))
+```
+
+
+## Tidyverse : Exercices
+
+```{r context="data"}
+url <- 'https://raw.githubusercontent.com/vincentarelbundock/ACMQ/master/inst/tutorials/R/data/UScereal.csv'
+uscereal <- read.csv(url)
+uscereal
+```
+
+En utilisant la base de donnée `uscereal`, selectionnez les variables `protein`, `fibre`, `sugars` et `potassium` en utilisant la fonction *select*:
+
+```{r select, exercise=TRUE}
+# Incluez le symbole `%>%` pour sélectionner les variables demandées.
+```
+
+```{r select-solution}
+library(tidyverse)
+uscereal %>% select(protein, fibre, sugars, potassium)
+```
+
+Utilisez la fonction *filter* pour extraire toutes les données qui contiennent des protéines supérieures ou égale à 8 **ou** qui contiennent des fibres supérieures à 20:
+
+```{r filter, exercise=TRUE}
+# N'oubliez pas que le `&` renvoie à "et" et `|` renvoie à "ou".
+```
+
+
+```{r filter-solution}
+uscereal %>% filter(protein >= 8 | fibre > 20)
+```
+
+Utilisez la fonction *filter* pour extraire toutes les données qui contiennent du sucre inférieur ou égal à 12 **et** qui contiennent du potassium inférieur à 30: 
+
+```{r filt, exercise=TRUE}
+# N'oubliez pas que le `&` renvoie à "et" et `|` renvoie à "ou".
+```
+
+```{r filt-solution}
+uscereal %>% filter(sugars <= 12 & potassium < 30)
+```
+
+Classez le data frame `uscereal` en fonction de la variable `protein`: 
+
+```{r arrange, exercise=TRUE}
+# Vous devriez utiliser la fonction arrange.
+```
+
+
+```{r arrange-solution}
+uscereal %>% arrange(protein)
+```
+
+Créez une nouvelle variable appelée `vitaminsA` qui prendra la forme de 1 si la variable `vitamins` est égale à *enriched* et 0 si elle est égale à *none* ou 100% : 
+
+```{r mutate, exercise=TRUE}
+# La fonction "mutat"e vous sera utile pour créer la nouvelle variable et la fonction "ifelse" pour les éléments de la variable.
+```
+
+
+```{r mutate-solution}
+uscereal %>% mutate(vitaminsA = ifelse(uscereal$vitamins == "enriched", 1, 0))
+```
+
+Calculez *l'écart type* et la *moyenne* de la fonction `carbo` en utilisant la fonction `summarize`:
+```{r summarize, exercise=TRUE}
+# N'oubliez pas de nommer l'écart type et la moyenne de la fonction "carbo".
+```
+
+
+```{r summarize-solution}
+uscereal %>% summarize(ecarttype_carbo = sd(carbo))
+uscereal %>% summarize(moyenne_carbo = mean(carbo))
+```
+
+Extrayez *la moyenne* de la variable `carbo` en fonction des valeurs de la variable `fibre` en utilisant la fonction `by_group`:
+```{r group, exercise=TRUE}
+# Vous devriez aussi utiliser la fonction "summarize".
+```
+
+```{r group-solution}
+uscereal %>% group_by(fibre) %>% 
+            summarize(moyenne_carbo = mean(carbo))
+```
+
+## Loop
+
+Un "loop" est une structure syntactique qui permet de répéter la même opération plusieurs fois. Le loop est composé de deux éléments. Premièrement, il inclut un "compteur" qui indique le nombre de fois qu'une opération doit être répétée. Ce compteur est créé par la fonction `for`. Deuxièmement, le loop inclut un "bloc" de commandes qui seront exécutées plusieurs fois. Ce bloc de commandes doit être encadré d'accolades `{}`.
+
+La commande suivante se lit ainsi: "Pour toutes les valeurs de `i` entre 1 et 5, imprimez la somme `i + 3`:
+
+```{r echo=TRUE}
+for (i in 1:5) {
+    print(i + 3)
+}
+```
+
+Cette commande crée un vecteur vide, et assigne des valeurs numériques aux 4 premiers éléments du vecteur:
+
+```{r echo=TRUE}
+x = vector()
+
+for (i in 1:4) {
+    x[i] <- i * 3
+}
+
+x
 ```
