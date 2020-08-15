@@ -30,8 +30,12 @@ remotes::install_github('vincentarelbundock/acmq')
 
 ## Exécuter le tutoriel
 
-Quand toutes les librairies sont installées, ouvrez le logiciel `RStudio`, et exécutez cette commande dans la Console:
+Quand toutes les librairies sont installées, ouvrez le logiciel `RStudio`, tapez la commande suivante dans la "Console", et exécutez la commande en appuyant sur la touche "Entrée" de votre clavier:
 
 ```r
 learnr::run_tutorial('R', package = 'acmq')
 ```
+
+<img width="881" alt="console" src="https://user-images.githubusercontent.com/987057/90315253-edffd700-dee7-11ea-859f-767a94e6ded6.png">
+
+Si tout va bien, un navigateur web devrait s'ouvrir avec un tutoriel pour apprendre comment `R` fonctionne.
