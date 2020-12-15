@@ -1,0 +1,87 @@
+---
+title: "Exercices - Mathématiques"
+author: "MATRICULE"
+output: 
+  pdf_document:
+      latex_engine: xelatex
+---
+
+# Quels sont les résultats numériques des équations suivantes?
+
+$$\sum_{j=10}^{15} j^{-1}$$
+$$\sum_{i=1}^5 2 \times i$$
+$$\prod_{j=1}^{3} j^{-1}$$
+$$\prod_{i=2}^5 2 \times i$$
+
+# Logarithme naturel 
+
+Démontrez le résultat numérique des deux commandes suivantes, et offrez une explication mathématique de ces résultats en utilisant les formules des logarithmes et des exposants.
+
+1. `exp(log(3))`
+1. `log(exp(2))`
+
+# Somme 1 
+
+Convertissez l'expression suivante en algèbre en utilisant le symbole de somme $\sum$: ``la moyenne de $X_i$ pour toutes les valeurs de $i$ entre 50 et 250."
+
+# Somme 2 
+
+Démontrez mathématiquement que: $\sum_{i=1}^5 2 X_i = 2 \sum_{i=1}^5 X_i$
+
+# Dérivée 1 
+
+Décrivez intuitivement, en mots et à l'aide d'un graphique, la relation entre une fonction et sa dérivée.
+
+# Dérivée 2
+
+Calculez les dérivées suivantes:
+
+1. $\frac{\partial y}{\partial x} \mbox{, pour } y = 2$
+2. $\frac{\partial y}{\partial x} \mbox{, pour } y = z$
+3. $\frac{\partial y}{\partial x} \mbox{, pour } y = x$
+4. $\frac{\partial y}{\partial x} \mbox{, pour } y = 2x$
+5. $\frac{\partial y}{\partial x} \mbox{, pour } y = zx$
+6. $\frac{\partial y}{\partial z} \mbox{, pour } y = zx$
+7. $\frac{\partial y}{\partial x} \mbox{, pour } y = 2zx$
+8. $\frac{\partial y}{\partial z} \mbox{, pour } y = 2zx$
+9. $\frac{\partial y}{\partial x} \mbox{, pour } y = 2x^3$
+10. $\frac{\partial y}{\partial x} \mbox{, pour } y = (5 - 4x)^2$
+11. $\frac{\partial y}{\partial x} \mbox{, pour } y = a + bx + cw + dz + e$
+12. $\frac{\partial y}{\partial x} \mbox{, pour } y = \beta_0 + \beta_1 x + \beta_2 x^2 + \varepsilon$
+13. $\frac{\partial y}{\partial x_2} \mbox{, pour } y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \varepsilon$
+14. $\frac{\partial y}{\partial x_2} \mbox{, pour } y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \varepsilon$
+15. $\frac{\partial y}{\partial x_3} \mbox{, pour } y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \varepsilon$
+16. $\frac{\partial y}{\partial x_1} \mbox{, pour } y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 x_2 + \beta_4 x_2x_3 + \beta_5 x_1x_3 + \beta_6 x_1x_2x_3 + \varepsilon$
+
+# Minimisation 1
+
+Tracez la fonction suivante:
+
+\begin{align*}
+y = x^2 + 6x + 5
+\end{align*}
+
+Trouvez la valeur de $x$ qui minimise $y$. Pour ce faire, suivez les étapes suivantes:
+
+1. calculez la dérivée $\frac{\partial y}{\partial x}$, 
+2. fixez cette dérivée à zéro, et 
+3. isolez $x$.
+
+Comment interprète-t-on ce résultat?
+
+# Minimisation 2
+
+Définissons $e = y - xb$. Trouvez la valeur de $b$ qui minimise $e^2$. 
+
+Pour ce faire, définissons d'abord l'expression $e^2$:
+
+\begin{align*}
+    e^2 &= (y-xb)^2 \\
+        &= y^2 - 2yxb + x^2b^2
+\end{align*}
+
+Ensuite, 
+
+1. calculez la dérivée $\frac{\partial e^2}{\partial b}$, 
+2. fixez cette dérivée à zéro, et 
+3. isolez $b$.

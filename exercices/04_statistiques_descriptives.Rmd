@@ -1,0 +1,95 @@
+---
+title: "Statistiques descriptives"
+author: "MATRICULE"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+---
+
+# Guess the correlation
+
+Jouez au moins trois parties de Guess the Correlation et insérez une capture d'écran de votre meilleur résultat dans le devoir.
+
+http://guessthecorrelation.com/
+
+# Banque Mondiale
+
+Pour les exercices suivants, utilisez la banque de données du _World Development Indicators_, disponible via la fonction `WDI()`.
+
+```{r, message=FALSE}
+# install.packages('WDI')
+library(WDI)
+library(tidyverse)
+
+# Pour mieux comprendre le fonctionnement de la fonction, utilisez
+?WDI()
+```
+
+```{r}
+# Importez les données
+d <- WDI(country = "all", 
+         indicator = c('pib_par_habitant' = "NY.GDP.PCAP.CD", 
+                       'malnutrition' = "SN.ITK.DEFC.ZS", 
+                       'perc_travailleuses' = "SL.TLF.TOTL.FE.ZS"), extra = TRUE)
+```
+
+Cette base de données inclut des informations sur plusieurs pays durant les années 1960 à 2018. Chaque rangée correspond à un pays lors d'une année. Chaque colonne correspond à une variable. Nous étudierons les 3 variables suivantes:
+
+- `pib_par_habitant`: PIB par habitant en dollars américains courants
+- `malnutrition`: pourcentage de la population en situation de malnutrition
+- `perc_travailleuses`: pourcentage de femmes dans la population active
+
+Avant de commencer l'analyse, nous enlevons quelques observations qui correspondent à des régions agrégées plutôt qu'à des pays:
+
+```{r}
+d <- d %>% filter(region != "Aggregates")
+```
+
+## Statistiques descriptives
+
+Calculez les statistiques descriptives suivantes:
+
+\begin{enumerate}
+\item La médiane du taux de malnutrition pour tous les pays.
+\item La médiane du PIB per capita pour les pays d'Europe et d'Asie Centrale.
+\item La moyenne du PIB per capita pour les pays d'Europe et d'Asie Centrale depuis 2000.
+\item L'écart-type du pourcentage de femmes dans la population active pour les pays de l'Amérique latine et des Caraïbes (\textit{Latin America \& Caribbean}).
+\item La corrélation entre le PIB par habitant et le taux de malnutrition pour les pays de l'Asie de l'Est et du Pacifique (\textit{East Asia \& Pacific}).
+\end{enumerate}
+
+## Sous-groupes
+
+Exécutez les opérations suivantes:
+
+* Conservez uniquement le sous-ensemble de données sur l'année 2017.
+* Ensuite, créez une nouvelle variable binaire 'riche' qui prend une valeur de 1 si le PIB par habitant d'un pays est plus élevé que la moyenne, et 0 autrement.^[La commande ifelse() pourrait être utile (tapez `?ifelse` dans R).]
+
+## Interprétation
+
+Décrivez chacune des expressions suivantes en mots, et donnez leurs valeurs numériques:
+
+* $E[\mbox{riche}]$
+* $P(\mbox{riche} = 1)$
+* $P(\mbox{riche} = 1|\mbox{Sub-Saharan Africa})$
+* $E[\mbox{PIB par hab.}|\mbox{North America}]$
+* $E[\mbox{Femmes dans la pop. active}|\mbox{Middle East \& North Africa}]$
+
+## Différences hommes-femmes
+
+En 2017, y avait-il des différences en termes de participation des femmes à la population active en fonction de la région?
+
+
+## Histogramme
+
+Tracez un histogramme du PIB par habitant pour les pays de l'Asie du Sud (_South Asia_) en 2017. Quel pays de cette région avait le plus bas PIB par habitant en 2017? 
+
+Utilisez la fonction `hist`. Votre histogramme devrait montrer le PIB par habitant sur l'axe horizontal et la fréquence des différentes valeurs sur l'axe vertical.
+
+
+## Dispersion
+
+Quelle région avait le taux de participation des femmes à la population active le moins homogène en 2017? De combien? Est-ce que votre réponse est différente si on exclut les pays riches (tels que définis plus haut)? Pourquoi ou pourquoi pas? 
+
+## Association
+
+Comment anticipez-vous le changement dans le PIB par habitant d'un pays lorsque les femmes y sont mieux intégrées à la population active (toujours en 2017)? Expliquez votre attente théorique, tracez un graphique bivarié à l'aide de la commande `plot`, et utilisez une corrélation pour évaluer votre prédiction.

@@ -1,0 +1,43 @@
+---
+author: "MATRICULE"
+title: "Effets hétérogènes"
+output: pdf_document
+---
+
+La banque de données *Quality of Governance* inclut les variables suivantes:
+
+* `cname`: Nom du pays 
+* `bti_ci`: Intensité des conflits sociaux, ethniques et religieux.  Cette variable est codée sur une échelle de 1 à 10, indiquant: 
+    + 1. Il n'y a pas d'incidents violents basé sur les différences sociales, ethniques ou religiieuses.
+    + 4. Il y a quelques incidents violents. Les acteurs politiques radicaux ne réussissent pas à se mobiliser, mais les élites sociétales et politiques sont divisées selon les clivages sociaux, ethniques ou religieux.
+    + 7. Il y a des incidents violents. Les groupes radicaux mobilisés et les mouvements protestataires dominent la politique. Les élites politiques et sociétales sont hautement divisées entre les différentes communautés ou classes sociales, ethniques ou religieuses.
+    + 10. Il y a une guerre civile ou un conflit violent répandu basé sur les différences sociales, ethniques ou religieuses.
+* `al_ethnic`: Fractionalisation ethnique
+    - La probabilité que deux personnes prises au hasard appartiennent au même groupe linguistiqque ou racial. Plus le nombre est haut, plus le pays est fractionnalisé. 
+* `dr_eg`: Mondialisation économique
+    - Niveau d'ouverture des échanges commerciaux et financiers avec le reste du monde.
+    - Échelle de 1 à 100. 
+* `fh_ipolity2`: Niveau de démocratie
+    - Échelle de 1 à 10 (0 = moins démocratique, 10 = plus démocratique). 
+
+Considérez les deux hypothèses suivantes:
+
+1. Les pays démocratiques ont des conflits sociaux moins intenses.
+2. L'effet négatif de la démocratie sur l'intensité des conflits est atténué dans les société factionalisées.
+
+Pour tester ces hypothèses, estimez deux modèles: un modèle purement linéaire, et un modèle avec interaction multiplicative. Les deux modèles doivent aussi contrôler pour le niveau de mondialisation économique.
+
+Présenter les résultats des deux modèles dans un tableau. Interpréter tous les coefficients du modèle avec interaction individuellement.
+
+Quel est l'effet marginal pertinent? À quelle dérivée correspond-il? Comment doit-on l'interpréter?
+
+
+Tracer un graphique d'effet marginal à l'aide la fonction `cplot` de la librairie `margins`. Votre commande devrait ressembler celle-ci:
+
+```{r, eval=FALSE}
+library(margins)
+
+cplot(model, dx="fh_ipolity2", x="al_ethnic", what="effect")
+```
+
+Est-ce que les deux hypothèses sont confirmées ou infirmées?

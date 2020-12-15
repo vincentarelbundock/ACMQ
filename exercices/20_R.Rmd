@@ -1,0 +1,92 @@
+---
+title: "Exercices - Le logiciel R"
+author: "MATRICULE"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+---
+
+# Installation
+
+Installez les programmes gratuits `R` et `R Studio` sur votre ordinateur personnel: 
+
+- https://cran.r-project.org/
+- https://www.rstudio.com
+
+Si vous avez un ordinateur Windows, vous devrez aussi installer RTools:
+
+- https://cran.r-project.org/bin/windows/Rtools/
+
+Reproduisez le résultat des deux commandes suivantes:[^1]
+
+[^1]: La première commande est essentielle, mais ne produit rien de visible dans R.
+
+```{r eval = FALSE}
+set.seed(124)
+rnorm(1)
+```
+
+# Manuel d'instruction
+
+Écrivez dans vos mots ce que les commandes suivantes accomplissent. Décrivez les 2 ou 3 principaux "arguments" de ces fonctions. Donnez un exemple (fonctionnel) d'utilisation pour chacune d'entre elles. (Astuce: Tapez `?ifelse` dans R.)
+
+- `ifelse`
+- `read.csv`
+- `mean`
+- `library`
+
+# Données manquantes
+
+Pourquoi est-ce que les deux commandes suivantes produisent des résultats différents? Faites référence à l'extrait spécifique du manuel d'instruction qui explique la différence.
+
+```{r} 
+mean(c(1, 3, NA))
+mean(c(1, 3, NA), na.rm=TRUE)
+```
+
+# Lecture d'une banque de données
+
+Le fichier `cses5.csv` contient les données du module 5 du _Comparative Study of Electoral Systems_ (CSES): https://cses.org/
+
+1. Téléchargez la base de données `cses5.csv`. 
+1. Utilisez la commande `read.csv` pour lire ces données en mémoire. 
+1. Créez une nouvelle banque de données qui contient seulement les variables suivantes: E1004, E2005, E2012, E3001, E3024_3
+1. Inspectez et copiez les premières rangées de cette banque de données. (`head`)
+1. Inspectez et copiez les dernières rangées de cette banque de données. (`tail`)
+
+# Recoder
+
+Lisez la descriptions des variables choisies plus haut dans le *codebook* des données CSES. Sur la base de ces informations, exécutez les tâches suivantes:
+
+* Utilisez la fonction `summary` pour obtenir des statistiques descriptives sur le nombre de personnes qui vivent sous le même toit. Quel est la valeur maximale? Est-ce réaliste? Pourquoi est-ce que la valeur maximale est fixée à ce niveau?
+
+Les fonctions `mutate`, `ifelse` et `case_when` de la librairie `tidyverse` nous permettent de recoder facilement des données. Par exemple, pour créer une nouvelle variable `y` qui est égale à 1 si `x > 10` et 0 sinon, nous pouvons taper:
+
+```{r, eval=FALSE}
+library(tidyverse)
+dat <- dat %>%
+       mutate(y = ifelse(x > 10, 1, 0))
+```
+
+Pour créer une variable `y` égale à 1 si $x<2$, à 2 si $x \in [2,4]$, et à 3 si $x>4$, nous écrivons:
+
+```{r, eval=FALSE}
+dat <- dat %>%
+       mutate(y = case_when(x < 2 ~ 1,
+                            x >= 2 & x <= 4 ~ 2,
+                            x > 4 ~ 3))
+```
+
+Chargez la librairie `tidyverse`, et utilisez les fonctions `mutate` et `case_when` pour créer les variables suivantes:
+
+* Une variable nommée `syndique` égale à 1 si le répondant est syndiqué, et à 0 si il n'est pas syndiqué.^[Les valeurs manquantes et les refus de répondre devraient être codés comme manquants (`NA`).]
+* Une variable nommée `maison_cat` égale à 1 pour les ménages de 1-2 personnes; 2 pour les ménages de 3-4; 3 pour les ménages de 5-6; 4 pour les ménages de 7 et plus; et `NA` pour les valeurs manquantes.
+* Une variable nommée `interet` qui va de 1 (personnes pas du tout intéressées par la politique) à 4 (personnes très intéressées par la politiques).
+
+# Analyser
+
+Analysez les données pour répondre aux questions suivantes:
+
+* Utilisez la fonction `table` pour calculer la fréquence pour chaque valeur de la variable `maison_cat`.
+* Quelle est la proportion de valeurs manquantes pour cette variable?
+* Quelle proportion des répondants sont syndiqués?

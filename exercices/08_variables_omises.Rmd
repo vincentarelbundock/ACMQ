@@ -1,0 +1,141 @@
+---
+title: "Devoir: Biais par variable omise"
+author: "MATRICULE"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+header-includes: 
+  - \usepackage{tikz}
+  - \usepackage{subfig}
+---
+
+# Formule du biais par variable omise
+
+Démontrez que (a) la régression multiple arrive à corriger le biais par variable omise, et que (b) le biais en question correspond exactement à ce qu'on devrait attendre compte tenu de son expression mathématique. Pour ce faire:
+
+1. Téléchargez une banque de données à partir du site suivant: 
+   - https://vincentarelbundock.github.io/Rdatasets/
+1. Définissez un modèle de régression "longue" avec deux variables indépendantes. (Décrivez tous vos modèles sous la forme d'équations linéaires.)
+1. Définissez un modèle de régression "courte" une variable indépendante.
+1. Estimez une régression linéaire longue, une régression courte, et la régression auxiliaire appropriée. Présentez les résultats des trois modèles dans un tableau (la librairie `modelsummary` pourrait être utile).
+1. Comparez les coefficients estimés et démontrez qu'il existe une relation mathématique exacte entre les coefficients des trois modèles. Ce faisant, vous aurez démontré que la régression multiple arrive effectivement à corriger le biais identifié par l'expression mathématique introduite dans le manuel.
+
+# Direction du biais par variable omise 
+
+Pour chaque GOA dans la Figure \ref{direction}, dites si le biais par variable omise est positif ou négatif. Dites ensuite s'il contribue à _sur_-estimer ou à _sous_-estimer la relation entre $X$ et $Y$.
+
+\begin{figure}
+\caption{Exercice sur la direction du biais par variable omise.\label{direction}}
+\begin{center}
+\subfloat[]{
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$\mbox{consommation de drogue (x)}$};
+\node (Z) at (2.5,-2) {$\mbox{santé mentale (z)}$};
+\node (Y) at (5,0) {$\mbox{suicide (y)}$};
+\path (X) edge (Y);
+\path (Z) edge (X);
+\path (Z) edge (Y);
+\draw (X) -- (Y) node [midway, above] (TextNode) {$\mbox{+}$};
+\draw (Z) -- (X) node [midway, below] (TextNode) {$\mbox{-}$};
+\draw (Z) -- (Y) node [midway, below] (TextNode) {$\mbox{-}$};
+\end{tikzpicture}}
+\quad
+\subfloat[]{
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$\mbox{démocratie (x)}$};
+\node (Z) at (2.5,-2) {$\mbox{richesse (z)}$};
+\node (Y) at (5,0) {$\mbox{guerre (y)}$};
+\path (X) edge (Y);
+\path (Z) edge (X);
+\path (Z) edge (Y);
+\draw (X) -- (Y) node [midway, above] (TextNode) {$\mbox{-}$};
+\draw (Z) -- (X) node [midway, below] (TextNode) {$\mbox{+}$};
+\draw (Z) -- (Y) node [midway, below] (TextNode) {$\mbox{-}$};
+\end{tikzpicture}}
+\quad
+\subfloat[]{
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$\mbox{nombre d'immigrants (x)}$};
+\node (Z) at (2.5,-2) {$\mbox{guerre dans un pays voisin (z)}$};
+\node (Y) at (5,0) {$\mbox{croissance économique (y)}$};
+\path (X) edge (Y);
+\path (Z) edge (X);
+\path (Z) edge (Y);
+\draw (X) -- (Y) node [midway, above] (TextNode) {$\mbox{+}$};
+\draw (Z) -- (X) node [midway, below] (TextNode) {$\mbox{+}$};
+\draw (Z) -- (Y) node [midway, below] (TextNode) {$\mbox{-}$};
+\end{tikzpicture}}
+\quad
+\subfloat[]{
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$\mbox{évaluation de l'économie (x)}$};
+\node (Z) at (2.5,-2) {$\mbox{appréciation du sortant (z)}$};
+\node (Y) at (5,0) {$\mbox{vote pour le sortant (y)}$};
+\path (X) edge (Y);
+\path (Z) edge (X);
+\path (Z) edge (Y);
+\draw (X) -- (Y) node [midway, above] (TextNode) {$\mbox{+}$};
+\draw (Z) -- (X) node [midway, below] (TextNode) {$\mbox{+}$};
+\draw (Z) -- (Y) node [midway, below] (TextNode) {$\mbox{+}$};
+\end{tikzpicture}}
+\quad
+\subfloat[]{
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$\mbox{monoparentalité (x)}$};
+\node (Z) at (2.5,-2) {$\mbox{être une femme (z)}$};
+\node (Y) at (5,0) {$\mbox{salaire (y)}$};
+\path (X) edge (Y);
+\path (Z) edge (X);
+\path (Z) edge (Y);
+\draw (X) -- (Y) node [midway, above] (TextNode) {$\mbox{-}$};
+\draw (Z) -- (X) node [midway, below] (TextNode) {$\mbox{+}$};
+\draw (Z) -- (Y) node [midway, below] (TextNode) {$\mbox{-}$};
+\end{tikzpicture}}
+\quad
+\subfloat[]{
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$\mbox{exploration navale (x)}$};
+\node (Z) at (2.5,-2) {$\mbox{richesse de la métropole (z)}$};
+\node (Y) at (5,0) {$\mbox{colonisation (y)}$};
+\path (X) edge (Y);
+\path (Z) edge (X);
+\path (Z) edge (Y);
+\draw (X) -- (Y) node [midway, above] (TextNode) {$\mbox{+}$};
+\draw (Z) -- (X) node [midway, below] (TextNode) {$\mbox{+}$};
+\draw (Z) -- (Y) node [midway, below] (TextNode) {$\mbox{+}$};
+\end{tikzpicture}}
+\quad
+\subfloat[]{
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$\mbox{stage pratique en milieu de travail (x)}$};
+\node (Z) at (3,-2) {$\mbox{cheminement pré-universitaire (z)}$};
+\node (Y) at (6,0) {$\mbox{emploi suite aux études (y)}$};
+\path (X) edge (Y);
+\path (Z) edge (X);
+\path (Z) edge (Y);
+\draw (X) -- (Y) node [midway, above] (TextNode) {$\mbox{+}$};
+\draw (Z) -- (X) node [midway, below] (TextNode) {$\mbox{-}$};
+\draw (Z) -- (Y) node [midway, below] (TextNode) {$\mbox{-}$};
+\end{tikzpicture}}
+\end{center}
+\end{figure}
+
+# Analyse d'un article 
+
+Considérez l'article suivant: ["Unions, Voter Turnout, and Class Bias in the U.S. Electorate, 1964–2004"](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1468-2508.2007.00541.x) (Leighley et Nagler, _Journal of Politics_, 2007) pour répondre aux questions suivantes.
+
+1. Identifiez la relation causale qui intéresse les auteur.e.s de cet article.
+1. Identifiez les variables qui pourraient provoquer des menaces par variable omise. Il peut s'agir de variables déjà identifiées par les auteur.e.s. Expliquez en quoi ces variables peuvent provoquer des biais par variable omise.
+1. Ces variables omises "aident-elles" l'argument des auteur.e.s? En d'autres mots, l'ajout de ces variables dans l'analyse renforce-t-il l'association entre la variable explicative et la variable dépendante, ou l'affaiblit?
+1. Illustrez la relation causale à l'aide d'un GOA, en prenant soin d'intégrer toutes les variables importantes. Ajoutez les variables déjà identifiées par les auteur.e.s et celles que vous avez identifiées (s'il y en a). Identifiez les chemins par la porte arrière et dites pour quelles variables nous devrions contrôler.
+1. Selon vous, les auteur.e.s ont-ils réussi à contrôler pour tous les biais par variable omise? Si oui, comment? Si non, le justifient-t-ils? 
+
+# Analyse d'un article au choix
+
+Choisissez un article scientifique de la discipline de votre choix pour répondre aux questions suivantes. 
+
+1. Identifiez la relation causale qui intéresse les auteur.e.s de cet article.
+1. Identifiez les variables qui pourraient provoquer des menaces par variable omise. Il peut s'agir de variables déjà identifiées par les auteur.e.s. Expliquez en quoi ces variables peuvent provoquer des biais par variable omise.
+1. Ces variables omises "aident-elles" l'argument des auteur.e.s? En d'autres mots, omettre ces variables de l'analyse pourrait-il renforcer l'association entre la variable explicative et la variable dépendante, ou l'affaiblir?
+1. Illustrez la relation causale à l'aide d'un GOA, en prenant soin d'intégrer toutes les variables importantes. Ajoutez les variables déjà identifiées par les auteur.e.s et celles que vous avez identifiées (s'il y en a). Identifiez les chemins par la porte arrière et dites pour quelles variables nous devrions contrôler.
+1. Selon vous, les auteur.e.s ont-ils réussi à contrôler pour tous les biais par variable omise? Si oui, comment? Si non, le justifient-t-ils? 

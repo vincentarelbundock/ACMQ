@@ -1,0 +1,26 @@
+---
+title: "Inférence statistique"
+author: "MATRICULE"
+output: 
+    pdf_document:
+        latex_engine: xelatex
+---
+
+
+Tous les lundis pendant 9 semaines, j'ai compté le nombre de jouets par terre dans la chambre de ma fille. Voici les résultats:
+
+```{r, echo=FALSE}
+library(knitr)
+Jouets <- c(10, 8, 9, 8, 7, 5, 6, 2, 7)
+Semaine <- 1:9
+kable(data.frame(Semaine, Jouets))
+```
+
+Est-ce que je peux rejeter l'hypothèse nulle selon laquelle le nombre de jouets moyen sur le plancher est égal à 6?
+
+Calculer *manuellement* toutes les statistiques nécessaires pour répondre à cette question (incluant les intervalles de confiance). Montrez vos calculs, et offrez une interprétation intuitive pour chaque statistique. Les seules fonctions `R` que vous avez le droit d'utiliser pour cet exercice sont: `pt`, `qt`.
+
+Notes:
+
+* Le nombre de degrés de liberté de la loi de Student est égal au nombre d'observations moins le nombre de paramètres à estimer (ici, nous estimons seulement la moyenne).
+* Pour que tout le monde arrive au même résultat, je vous demande d'appliquez la formule de la variance dans le livre, et pas la formule corrigée de Bessel.

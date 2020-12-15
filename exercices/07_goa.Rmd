@@ -1,0 +1,319 @@
+---
+title: "Graphes Orientés Acycliques"
+author: "MATRICULE"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+header-includes: 
+  - \usepackage{tikz}
+  - \usepackage{subcaption}
+  - \captionsetup{compatibility=false}
+---
+
+# Identification causale
+
+Dans tous les Graphes Orientés Acycliques que nous étudierons dans ce devoir, l'objectif de l'analyste est d'identifier l'effet causal de $X$ sur $Y$. Pour chacun des GOAs dans la Figure \ref{fig:firstgroup},
+
+1. Faites la liste des variables pour lesquelles il faut éviter de contrôler.
+2. Faites la liste de tous les chemins par la porte arrière.
+3. Est-ce qu'il y a des chemins par la porte arrière qui sont ouverts?
+4. Si oui, est-il possible de les bloquer en contrôlant pour des variables qui n'ont pas été identifiées à la question #1?
+5. Est-ce que l’effet causal de $X$ sur $Y$ est identifiable?
+
+\begin{figure}[h!]
+\caption{\label{fig:firstgroup}}
+%
+\begin{subfigure}[t]{0.3\textwidth}
+\caption{\label{goa1}}
+\centering
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$X$};
+\node (Z1) at (1.5,0) {$Z$};
+\node (Y) at (3,0) {$Y$};
+\path (X) edge (Z1);
+\path (Z1) edge (Y);
+\end{tikzpicture}
+\end{subfigure}
+%
+\begin{subfigure}[t]{0.3\textwidth}
+\caption{\label{goa2}}
+\centering
+\begin{tikzpicture}[->]
+\node (Z1) at (0,0) {$Z$};
+\node (X) at (1.5,0) {$X$};
+\node (Y) at (3,0) {$Y$};
+\path (Z1) edge (X);
+\path (X) edge (Y);
+\end{tikzpicture}
+\end{subfigure}
+%
+\begin{subfigure}[t]{0.3\textwidth}
+\caption{\label{goa3}}
+\centering
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$X$};
+\node (Z1) at (1.5,0) {$Z$};
+\node (Y) at (3,0) {$Y$};
+\path (Z1) edge (X);
+\path (Z1) edge (Y);
+\end{tikzpicture}
+\end{subfigure}
+%
+\begin{subfigure}[t]{0.3\textwidth}
+\caption{\label{goa4}}
+\centering
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$X$};
+\node (Z1) at (1.5,0) {$Z_1$};
+\node (Z2) at (1.5,-1) {$Z_2$};
+\node (Y) at (3,0) {$Y$};
+\path (X) edge (Z1);
+\path (Z1) edge (Y);
+\path (Z2) edge (X);
+\path (Z2) edge (Y);
+\end{tikzpicture}
+\end{subfigure}
+%
+\begin{subfigure}[t]{0.3\textwidth}
+\caption{\label{goa5}}
+\centering
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$X$};
+\node (Z1) at (1.5,0) {$Z_1$};
+\node (Y) at (3,0) {$Y$};
+\path (X) edge (Z1);
+\path (Y) edge (Z1);
+\end{tikzpicture}
+\end{subfigure}
+%
+\begin{subfigure}[t]{0.3\textwidth}
+\caption{\label{goa6}}
+\centering
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$X$};
+\node (Z1) at (1.5,0) {$Z_1$};
+\node (Z2) at (0.75,-1) {$Z_2$};
+\node (Y) at (3,0) {$Y$};
+\path (X) edge (Z1);
+\path (Y) edge (Z1);
+\path (Z2) edge (X);
+\path (Z2) edge (Z1);
+\end{tikzpicture}
+\end{subfigure}
+%
+\begin{subfigure}[t]{0.3\textwidth}
+\caption{\label{goa7}}
+\centering
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$X$};
+\node (Z2) at (1,0) {$Z_2$};
+\node (Y) at (2,0) {$Y$};
+\node (Z1) at (1,1) {$Z_1$};
+\node (Z3) at (1,-1) {$Z_3$};
+\node (Z4) at (2,-1) {$Z_4$};
+\node (Z5) at (3,0) {$Z_5$};
+\path (X) edge (Z2);
+\path (Z2) edge (Y);
+\path (Z1) edge (X);
+\path (Z1) edge (Z2);
+\path (X) edge (Z3);
+\path (Z3) edge (Z4);
+\path (Z5) edge (Z4);
+\path (Z4) edge (Y);
+\path (Z5) edge (Y);
+\end{tikzpicture}
+\end{subfigure}
+%
+\begin{subfigure}[t]{0.3\textwidth}
+\caption{\label{goa8}}
+\centering
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$X$};
+\node (Z1) at (.5,-1) {$Z_1$};
+\node (Z2) at (1,0) {$Z_2$};
+\node (Z3) at (1.5,1) {$Z_3$};
+\node (Z4) at (2,0) {$Z_4$};
+\node (Z5) at (2.5,-1) {$Z_5$};
+\node (Y) at (3,0) {$Y$};
+\path (X) edge (Z2);
+\path (Z1) edge (X);
+\path (Z1) edge (Z2);
+\path (Z3) edge (X);
+\path (Z3) edge (Y);
+\path (Z4) edge (Z2);
+\path (Z4) edge (Y);
+\path (Z5) edge (Z4);
+\path (Z5) edge (Y);
+\end{tikzpicture}
+\end{subfigure}
+%
+\begin{subfigure}[t]{0.3\textwidth}
+\caption{ \label{goa9}}
+\centering
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$X$};
+\node (Z1) at (0,1) {$Z_1$};
+\node (Y) at (3,0) {$Y$};
+\node (Z2) at (0,-1) {$Z_2$};
+\node (Z3) at (1.5,1) {$Z_3$};
+\node (Z4) at (1.5,0) {$Z_4$};
+\node (Z5) at (1.5,-1) {$Z_5$};
+\path (Z1) edge (X);
+\path (Z1) edge (Z3);
+\path (X) edge (Z4);
+\path (Z4) edge (Y);
+\path (Z3) edge (Y);
+\path (Z3) edge (Z4);
+\path (X) edge (Z2);
+\path (Z5) edge (X);
+\path (Z5) edge (Z2);
+\path (Z5) edge (Z4);
+\path (Z5) edge (Y);
+\end{tikzpicture}
+\end{subfigure}
+%
+\end{figure}
+
+# Identification et simulation
+
+Vous allez maintenant devoir simuler des données qui se conforment à un modèle théorique donné. Par exemple, considérons le modèle suivant:
+
+\begin{center}
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$X$};
+\node (Z) at (1,1) {$Z$};
+\node (Y) at (2,0) {$Y$};
+\path (X) edge (Y);
+\path (Z) edge (Y);
+\path (Z) edge (X);
+\end{tikzpicture}
+\end{center}
+
+Si (a) toutes les relations du modèle sont linéaires, (b) tous les coefficients sont égaux à 1, et (c) toutes les variables ont une composante aléatoire distribuée normalement, alors nous pouvons générer des données simulées ainsi: 
+
+```{r}
+n <- 100000 # nombre d'observations
+Z <- rnorm(n)
+X <- 1 * Z + rnorm(n)
+Y <- 1 * X + 1 * Z + rnorm(n)
+```
+
+Puisque nous avons généré ces données nous-même, nous *savons* que le "vrai" coefficient qui mesure l'effet de $X$ sur $Y$ est égal à 1. En d'autres mots, une augmentation d'un point dans $X$ est associée avec une augmentation d'un point dans $Y$.
+
+Maintenant, voyons voir ce que le modèle bivarié (sans contrôler pour $Z$) donne comme coefficient:
+
+```{r}
+mod <- lm(Y ~ X)
+coef(mod)
+```
+
+Sans contrôler pour $Z$, le coefficient de l'association entre $X$ et $Y$ n'est pas égal à 1. Sans contrôler pour $Z$, le coefficient associé à la variable $X$ est biaisé.
+
+Maintenant, considérons le bon modèle, soit celui qui ferme le chemin par la porte arrière $X$ &larr; $Z$ &rarr; $Y$:
+
+```{r}
+mod <- lm(Y ~ X + Z)
+coef(mod)
+```
+
+Le coefficient de l'association linéaire entre $X$ et $Y$ bel et bien égal à 1.
+
+Pour cet exercice, vous devez suivre les mêmes étapes que nous avons illustré ci-haut. Pour chacun des GOAs dans la figure \ref{fig:second},
+
+1. Identifiez les chemins par la porte arrière qui lient $X$ et $Y$. 
+2. Déterminez pour quelle(s) variable(s) il faut contrôler et ne pas contrôler. 
+3. Générez des variables ($X$, $Y$, $Z_1$, etc.). 
+4. Estimez le bon modèle pour prouver que votre analyse théorique est juste. 
+5. Comparez la simulation de votre bon modèle à la simulation d'un modèle erroné. 
+
+\begin{figure}[h!]
+\caption{\label{fig:second}}
+%
+\begin{subfigure}[t]{.3\textwidth}
+\centering
+\caption{\label{goa21}}
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$X$};
+\node (Z1) at (0,2) {$Z_1$};
+\node (Z2) at (1,1) {$Z_2$};
+\node (Z3) at (1,0) {$Z_3$};
+\node (Z4) at (2,2) {$Z_4$};
+\node (Y) at (2,0) {$Y$};
+\path (X) edge (Z1);
+\path (X) edge (Z3);
+\path (Z2) edge (X);
+\path (Z2) edge (Z1);
+\path (Z2) edge (Y);
+\path (Z3) edge (Y);
+\path (Z4) edge (Y);
+\path (Z4) edge (Z2);
+\end{tikzpicture}
+\end{subfigure}
+%
+\begin{subfigure}[t]{.3\textwidth}
+\centering
+\caption{\label{goa22}}
+\begin{tikzpicture}[->]
+\node (X) at (0,0) {$X$};
+\node (Z1) at (0,-1) {$Z_1$};
+\node (Z3) at (1,0) {$Z_3$};
+\node (Z4) at (1,-1) {$Z_4$};
+\node (Z2) at (1,1) {$Z_2$};
+\node (Y) at (2,0) {$Y$};
+\path (X) edge (Z3);
+\path (Z1) edge (X);
+\path (Z1) edge (Z4);
+\path (Z3) edge (Y);
+\path (Z4) edge (X);
+\path (Z4) edge (Z3);
+\path (Z2) edge (Y);
+\path (Z2) edge (Z3);
+\end{tikzpicture}
+\end{subfigure}
+%
+\begin{subfigure}[t]{.3\textwidth}
+\centering
+\caption{\label{goa23}}
+\begin{tikzpicture}[->]
+\node (Z1) at (0,0) {$Z_1$};
+\node (X) at (1,0) {$X$};
+\node (Y) at (2,0) {$Y$};
+\node (Z2) at (0,-2) {$Z_2$};
+\node (Z3) at (1.5,1) {$Z_3$};
+\node (Z4) at (1.5,-1) {$Z_4$};
+\node (Z5) at (2.5,-2) {$Z_5$};
+\node (Z6) at (3,0) {$Z_6$};
+\path (X) edge (Z1);
+\path (X) edge (Z4);
+\path (Z2) edge (Z1);
+\path (Z2) edge (Z4);
+\path (Z2) edge (X);
+\path (Z2) edge (Z5);
+\path (Z3) edge (X);
+\path (Z3) edge (Y);
+\path (Z4) edge (Y);
+\path (Z4) edge (Z5);
+\path (Z6) edge (Y);
+\path (Z5) edge (Y);
+\end{tikzpicture}
+\end{subfigure}
+%
+\end{figure}
+
+# Modèle théorique #1
+
+1. Choisissez 2 articles dans des revues scientifiques. Ces articles doivent présenter un tableau de régression multiple.
+2. Identifiez la variable dépendante principale, la variable indépendante principale, et trois variables de contrôle importantes. 
+3. Dessinez un GOA qui décrit la relation entre ces 5 variables.
+4. Selon vous, est-ce que le modèle estimé est approprié pour identifier une relation causale?
+
+# Modèle théorique #2
+
+Lisez rapidement la section empirique de cet article: 
+
+> ["Out of Step, Out of Office: Electoral Accountability and House Members’ Voting"](https://www.cambridge.org/core/journals/american-political-science-review/article/out-of-step-out-of-office-electoral-accountability-and-house-members-voting/A5E4346ED9DD671DEFC6EE48064A0812) (Canes-Wrone et Cogan, _American Poltical Science Review_, 2002) 
+
+1. Tracez un GOA pour représenter le test empirique principal de cet article. Le GOA doit inclure toutes les variables du modèle de régression.
+2. Identifiez les chemins par la porte arrière (ouverts et fermés). 
+3. Selon vous, est-ce que les auteurs contrôlent pour les variables nécessaires dans leur modèle de régression? 
+4. Est-ce que les auteurs contrôlent pour des variables qui ne doivent *pas* être incluses dans le modèle?

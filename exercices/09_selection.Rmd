@@ -1,0 +1,60 @@
+---
+title: "Devoir: Biais de sélection"
+author: "MATRICULE"
+output: 
+  pdf_document:
+      latex_engine: xelatex
+header-includes: 
+  - \usepackage{tikz}
+---
+
+# Simulation 
+
+Voici du code R pour créer une nouvelle base de données par simulation. Puisque c'est nous qui simulons les données, nous connaissons la "vérité" en ce qui concerne la relation entre la variable dépendante et la variable indépendante:
+
+```{r}
+N <- 1000000 
+X <- rnorm(N) 
+e <- rnorm(N)
+Y <- 2 * X + e 
+dat <- data.frame(X, Y)
+```
+
+Maintenant, nous estimons trois modèles de régression, sur trois parties de l'échantillon différentes:
+
+```{r}
+library(modelsummary)
+mod <- list(
+  "Complet" = lm(Y ~ X, dat), 
+  "X"       = lm(Y ~ X, dat[dat$X > 0,]), 
+  "Y"       = lm(Y ~ X, dat[dat$Y > 0,]) 
+)
+modelsummary(mod)
+```
+
+Questions:
+
+1. Quel modèle est biaisé?
+1. Pourquoi est-il biaisé? 
+1. Qu'est-ce qui, intuitivement, explique la direction du biais de sélection?
+1. Pourquoi est-ce que l'autre modèle n'est pas biaisé? 
+
+# Analyste d'un article scientifique
+
+Considérez l'article suivant: ["The Impact of Entrepreneurship Programs on Minorities"](https://www.aeaweb.org/articles?id=10.1257/aer.p20171008) (Lyons et Zhang, _American Economic Review_, 2017) pour répondre aux questions suivantes.
+
+1. Identifiez la relation qui intéresse les auteur.e.s de cet article.
+1. Identifiez les variables qui pourraient provoquer des menaces par biais de sélection. Il peut s'agir de variables déjà identifiées par les auteur.e.s. Expliquez en quoi ces variables peuvent provoquer ce type de biais.
+1. Ces variables "aident-elles" l'argument des auteur.e.s? En d'autres mots, le biais de sélection renforce-t-il l'association entre la variable explicative et la variable dépendante, ou l'affaiblit?
+1. Illustrez la relation causale entre $X$ et $Y$ ainsi que la variable à l'origine du biais de sélection à l'aide d'un GOA. Dites en quoi l'ajout de cette variable fait passer l'information statistique entre $X$ et $Y$.
+1. Selon vous, les auteur.e.s ont-ils réussi à contourner ce biais de sélection? Si oui, comment? Si non, offrent-ils des pistes de solution? 
+
+# Analyse d'un article au choix 
+
+Choissez un article scientifique de la discipline de votre choix pour répondre aux questions suivantes. 
+
+1. Identifiez la relation causale qui intéresse les auteur.e.s de cet article.
+1. Identifiez les variables qui pourraient provoquer des menaces par biais de sélection. Il peut s'agir de variables déjà identifiées par les auteur.e.s. Expliquez en quoi ces variables peuvent provoquer ce type de biais.
+1. Ces variables "aident-elles" l'argument des auteur.e.s? En d'autres mots, le biais de sélection renforce-t-il l'association entre la variable explicative et la variable dépendante, ou l'affaiblit?
+1. Illustrez la relation causale entre $X$ et $Y$ ainsi que la variable à l'origine du biais de sélection à l'aide d'un GOA. Dites en quoi l'ajout de cette variable fait passer l'information statistique entre $X$ et $Y$.
+1. Selon vous, les auteur.e.s ont-ils réussi à contourner ce biais de sélection? Si oui, comment? Si non, offrent-ils des pistes de solution? 

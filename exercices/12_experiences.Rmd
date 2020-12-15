@@ -1,0 +1,56 @@
+---
+title: "Devoir: Expériences"
+author: "MATRICULE"
+output: 
+    pdf_document:
+        latex_engine: xelatex
+header-includes: 
+  - \usepackage{tikz}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tidy.opts = list(width.cutoff = 48), tidy = TRUE, collapse = TRUE, warning = FALSE, message = FALSE)
+```
+
+# Gold standard 
+
+Expliquez dans vos mots (i.e., intuitivement) pourquoi les expériences avec assignement aléatoire constituent le "Gold Standard" de l'inférence causale. Votre réponse devrait aussi faire références aux problèmes de biais par variables omises, de sélection, et d'endogénéité.
+
+# Analyse d'un article
+
+Pour répondre aux questions qui suivent, considérez l'article suivant: 
+
+> Foos, F et F Gilardi. 2019. "Does Exposure to Gender Role Models Increase Women’s Political Ambition? A Field Experiment With Politicians", _Journal of Experimental Political Science_. https://doi.org/10.1017/XPS.2019.21
+
+La banque de données employée pour cet article comprend 959 rangées, soit une par répondant. Elle comprend plusieurs colonnes, dont 5 nous intéressent:
+
+- `female_gen`: 1 = être une femme, 0 = être un homme
+- `Treatment`: 1 = traitement, 0 = contrôle
+- `Application`: 1 = a appliqué au programme de mentorat, 0 = n'a pas appliqué
+- `running_for_office_w2`: "I could see myself running for office in a few years." 0 = pas du tout, 4 = tout à fait
+- `campaign_online_w2`: “How frequently did you follow the campaign online?” 0 = jamais, 4 = très souvent
+
+Téléchargez la banque de données utilisée dans cette étude et répondez aux questions qui suivent. Montrer tous vos calculs et le code R nécessaire pour effectuer ces calculs.
+   
+1. Quelle est la relation causale qui intéresse les auteurs?
+2. Décrivez l'échantillon.
+3. Quel est le traitement ($X$)? Quel est le mécanisme d'assignation au traitement?
+4. Quel est le résultat mesuré ($Y$)? Y a-t-il d'autres résultats mesurés (d'autres $Y$)?
+6. Calculez la différence entre la probabilité d'appliquer au programme de mentorat dans le groupe traitement et dans le groupe de contrôle. Interprétez en mots.
+7. Estimez la même différence de moyenne à l’aide d’un modèle de régression avec variable dichotomique. Interprétez la substance et la signification statistique du coefficient.
+8. Répétez le même exercice, mais mesurez l'effet du traitement sur l'intérêt de se présenter aux élections dans quelques années. 
+9. Répétez le même exercice, mais mesurez l'effet du traitement sur le niveau d'intérêt pour la campagne électorale. 
+10. Interprétez ces résultats de manière substantive. Qu'est-ce que cela signifie pour la théorie testée par les auteurs?
+
+# Analyse d'un article au choix
+
+Choisissez une étude expérimentale publiée dans une revue avec évaluation par les pairs au cours des 5 dernières années.
+
+1. Quelle est la relation causale qui intéresse les auteurs?
+2. Quel est l'échantillon?
+3. Quel est le traitement ($x$)? 
+4. Quel est le résultat mesuré ($y$)? Y a-t-il un d'autres résultats mesurés (d'autres $y$)?
+5. Est-ce que la banque de données utilisée dans cet article est disponible en ligne?
+6. Quel modèle est-ce que vous utiliseriez pour analyser cette banque de données?
+
+Des points bonus seront accordés aux étudiants qui téléchargent la banque de données et qui répliquent l'analyse.

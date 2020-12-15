@@ -1,0 +1,57 @@
+---
+title: "Quasi-expériences"
+author: "MATRICULE"
+output: 
+  pdf_document:
+      latex_engine: xelatex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tidy.opts = list(width.cutoff = 48), tidy = TRUE, collapse = TRUE, warning = FALSE, message = FALSE, results = 'hide')
+```
+
+## Considérez l'article suivant: ["Assessing Ballot Structure and Split Ticket Voting: Evidence from a Quasi-Experiment"](https://www.journals.uchicago.edu/doi/pdfplus/10.1086/688677) (Barnes, Tchintian et Alles, _The Journal of Politics_, 2017) pour répondre aux questions suivantes.
+
+1. Quelle est la relation causale à laquelle s'intéressent les auteurs?
+2. Décrivez brièvement la quasi-expérience exploitée par les auteurs de cet article. Comment les auteurs justifient-ils la validité de leur quasi-expérience? En d'autres termes, comment respectent-ils le postulat de l'assignation aléatoire? Cette justification est-elle convaincante?
+3. Quels sont les résultats principaux de l'étude?
+
+<!--4. La banque de données et les fichiers de réplication de cette étude sont disponibles en ligne. Lisez la banque de données dans `R`.
+
+```{r}
+#d <- read.csv("e-voting.csv")
+```
+
+Cette base de données comprend XXXXX rangées (une par répondant). Elle comprend une colonne pour chacune des XXX variables qui nous intéressent: 
+
+- `n`: 
+
+5. Calculez la différence entre la probabilité d'utiliser le "split-ticket voting" dans les districts ayant reçu le traitement et ceux n'ayant pas reçu le traitement _en 2007_.
+6. Calculez la différence entre la probabilité d'utiliser le "split-ticket voting" dans les districts ayant reçu le traitement et ceux n'ayant pas reçu le traitement _en 2011_.
+7. Calculez la différence entre ces deux différences ($\mbox{réponse au numéro 5} - \mbox{réponse au numéro 6}$).
+8. Interprétez ce résultat en mots.-->
+
+### Solution
+
+1. Les auteurs s'intéressent à la relation causale entre le type de bulletin de vote (électronique) et la propension des électeurs à diviser leur vote (split-ticket voting).
+2. Les auteurs mobilisent l'introduction graduelle du vote électronique en Argentine: "The governor and the Electoral Tribunal jointly decided to incrementally introduce the new voting procedure to half of the electorate in the legislative district of Salta." Les électeurs de districts qui utilisent toujours le bulletin papier correspondent au groupe contrôle, les électeurs de districts qui utilisent le vote électronique correspondent au groupe traitement. [Dites si vous trouvez cela convainquant.]
+3. L'introduction du vote électronique est associée à une augmentation du "split-ticket voting" par 4.64 points. Cette différence est statistiquement significative: "Before the implementation of e-voting, the average share of split ballots between the executive and legislative election was 8.52 in the control group in 2007, and 9.26 in the treatment group. The difference is not statistically significant. In 2011, the difference is substantially larger. Whereas the share of vote splitting was only 5.23 in precincts with paper ballots, the share of split ballots increased almost twofold in districts with e-voting to 10.6. The difference-in-difference approach identifies the causal effect of e-voting, which corresponds to a statistically significant increase of 4.64." (p.448) Les auteurs concluent que l'introduction du vote électronique cause une augmentation dans la pratique du "split-ticket voting".
+
+## Considérez l'article suivant: ["The Effect of Electoral Systems on Voter Turnout: Evidence from a Natural Experiment"](https://www.cambridge.org/core/journals/political-science-research-and-methods/article/effect-of-electoral-systems-on-voter-turnout-evidence-from-a-natural-experiment/C3B29DCB9813A580A5E1059512427AC2) (Sanz, _Political Science Research and Methods_, 2015) pour répondre aux questions suivantes.
+
+1. Quelle est la relation causale à laquelle s'intéresse l'auteur?
+2. Décrivez brièvement les stratégies de "regression discontinuity" adoptées par l'auteur de cet article. Est-ce que l'approche est convaincante? Comment l'auteur justifie-t-il la validité de sa méthode? En d'autres termes, comment respectent-il le postulat de l'assignation aléatoire? Cette justification est-elle convaincante?
+3. Quels sont les résultats principaux de l'étude?
+
+## Solution 
+
+1. L'auteur s'intéresse à l'effet causal du mode de scrutin sur le niveau de participation électorale.
+2. En Espagne, le mode de scrutin est déterminé par le gouvernement central et dépend de la grandeur des municipalités. À partir de 250 habitants, les municipalités doivent utiliser le mode de scrutin de liste fermée. Les municipalités de 100 à 250 habitants utilisent le mode de scrutin de liste ouverte. Enfin, les municipalités de moins de 100 habitants utilisent le mode de scrutin pluralitaure (FPTP). L'auteur peut comparer la différence entre le niveau de participation électorale des municipalités tout juste plus petites ou plus grandes que 250 et attibuer cette différence au mode de scrutin (liste ouverte vs. fermée). [Dites si vous trouvez cela convainquant.]
+3. Le système par liste ouverte augmente la participation électorale par 1-2 points. 
+
+## Sélectionnez un article scientifique de la discipline de votre choix pour répondre aux questions suivantes.
+
+1. Quelle est la relation causale qui intéresse les auteur.e.s?
+2. Quelle est la méthode quasi-expérimentale utilisée (expérience naturelle, "regression discontinuity", etc.) pour répondre à la question de recherche?
+3. La justification des auteur.e.s concernant le caractère aléatoire du traitement est-elle convaincante? Pourquoi?
+4. Quels sont les résultats principaux des auteur.e.s?

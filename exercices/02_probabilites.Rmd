@@ -1,0 +1,70 @@
+---
+title: "Exercices - Probabilités"
+author: "MATRICULE"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+---
+
+# Mise en situation
+
+Lancez une pièce de monnaie 50 fois et prenez en note le nombre de 'faces'.
+
+1. Quel est la proportion de 'faces'?
+2. Si la seule information dont vous disposiez sur ce processus stochastique était la moyenne des lancers précédents, quelle serait votre prédiction quant à la probabilité d'obtenir une 'face' au 51e lancé?
+
+Lancez une punaise 50 fois et prenez en note le nombre de fois qu'elle atterrit avec le pique vers le haut. 
+
+3. Quelle est la proportion où le pique pointant vers le haut?
+4. Quelle serait votre prédiction quant à la probabilité que la punaise pointe vers le haut si vous la lancez une 51e fois?
+5. Est-ce que la pièce de monnaie et la punaise réprésente une seule population? Pourquoi?
+
+# Élection
+
+Le tableau suivant rapporte la distribution des députés québécois élus à l'élection de 2014 selon le domaine général de leur profession (Y) et le parti (X)[^3].
+
+[^3]: Données adaptées de [Radio-Canada](https://ici.radio-canada.ca/nouvelle/662224/professions-deputes-gouvernement-quebec-partis-assemblee-nationale)
+
+|          | PLQ | PQ | CAQ | QS |
+|----------|-----|----|-----|----|
+| Économie | 19  | 7  | 7   | 0  |
+| Santé    | 4   | 2  | 0   | 1  |
+| Justice  | 16  | 5  | 3   | 0  |
+| Social   | 15  | 7  | 6   | 2  |
+| Divers   | 16  | 9  | 6   | 0  |
+| Total    | 70  | 30 | 22  | 3  |
+
+À partir de ces informations, calculez les probabilités suivantes:
+
+1. $P(Y = Santé) =$
+2. $P(Y = Social) =$
+3. $P(X = PQ) =$
+4. $P(Y = Economie, X = PLQ) =$
+5. $P(Y = Justice, X = CAQ) =$
+6. $P(Y = Divers | X = PQ) =$
+7. $P(Y = Social | X = PLQ) =$
+
+Vrai ou faux?
+
+1. $P(Y = Justice) > P(X = CAQ)$
+2. $P(Y = Economie, X = PQ) < P(Y = Santé, X = PLQ)$
+3. La probabilité d'être un(e) député(e) de QS est plus élevée que la probabilité d'être un(e) député(e) du PQ provenant du domaine de la santé.
+4. La probabilité d'être un(e) député(e) de la CAQ du domaine de la justice est plus élevée que d'être un(e) député(e) du PQ du domaine social.
+
+Transformez les affirmations suivantes en notation mathématique et calculez.
+
+1. La probabilité conjointe qu'un(e) député(e) provienne du domaine de la santé et appartienne à QS.
+2. La probabilité conjointe qu'un(e) député(e) provienne d'un domaine divers et appartienne au PQ.
+3. La probabilité que le domaine de profession d'un(e) député(e) soit la justice étant donné que le parti est le PLQ. 
+4. La probabilité que le domaine de profession d'un(e) député(e) soit l'économie étant donné que le parti est la CAQ.
+
+# Probabilité et distribution continue 
+
+La fonction `pnorm(Z, mean=0, sd=1)` calcule l'aire sous la courbe à la gauche de $Z$ sur une densité de probabilité normale avec moyenne 0 et écart-type 1[^1]. Quel pourcentage de la distribution se trouve dans chacune des régions suivantes? Dessinez chacune des régions (approximativement, à la main si vous voulez), et insérez ces dessins dans le document.^[Google "Insert image in Rmarkdown document". Souvenez-vous que les barres verticales représentent des valeurs absolues, de sorte que $|-2|=2$.]
+
+[^1]:Souvenez-vous que l'aire totale sous la courbe de densité est de 1. 
+
+1. $Z < 1.3$
+2. $Z > 1.48$
+3. $|Z| < 0.5$
+4. $|Z| > 1.959964$

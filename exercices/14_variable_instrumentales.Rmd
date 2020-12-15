@@ -1,0 +1,92 @@
+---
+title: "Devoir - Variables instrumentales"
+author: "MATRICULE"
+output: 
+  pdf_document:
+      latex_engine: xelatex
+header-includes: 
+  - \usepackage{tikz}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tidy.opts = list(width.cutoff = 48), tidy = TRUE, collapse = TRUE, warning = FALSE, message = FALSE)
+```
+
+# Simulation et estimation
+
+\begin{tikzpicture}[->]
+\node (X) at (1.5,0) {$X$};
+\node (Z) at (0,0) {$Z$};
+\node (U) at (3,1) {$U$};
+\node (Y) at (4.5,0) {$Y$};
+\path (X) edge (Y);
+\path (Z) edge (X);
+\path (U) edge (X);
+\path (U) edge (Y);
+\draw (Z) -- (X) node [midway, above, sloped] (TextNode) {$\mbox{3}$};
+\draw (X) -- (Y) node [midway, above, sloped] (TextNode) {$\mbox{2}$};
+\draw (U) -- (X) node [midway, above, sloped] (TextNode) {$\mbox{1.5}$};
+\draw (U) -- (Y) node [midway, above, sloped] (TextNode) {$\mbox{2.5}$};
+\end{tikzpicture}
+
+1. Assumez que toutes les relations représentées dans ce GOA sont linéaires et simulez des données qui correspondent à cette structure causale.
+1. Montrez que la régression bivariée produit un estimé biaisé de la relation entre $X$ et $Y$ si on ne contrôle pas pour $U$.
+1. Expliquez pourquoi cet estimé est biaisé.
+1. Estimez un modèle de régression par les moindres carrés en deux étapes manuelle, à l'aide d'applications successives de la fonction `lm()`.
+1. Estimez un modèle de régression par les moindres carrés en deux étapes à l'aide de la fonction `ivreg()` de la librairie `ivreg`.
+1. Expliquez les résultats en mots.
+
+# Analyse d'une étude publiée
+
+Considérez l'article suivant: ["Fortune or Evil? The Effect of Inward Foreign Direct Investment on Corruption"](https://academic.oup.com/isq/article/60/4/693/2669514) (Pinto et Zhu, _International Studies Quarterly_, 2016) pour répondre aux questions suivantes.
+
+1. Quelle est la relation causale qui intéresse les auteurs?
+1. Décrivez brièvement la méthode par variable instrumentale exploitée par les auteurs de cet article. 
+1. Comment les auteurs justifient-t-il que les postulats suivants:
+     - inclusion, 
+     - exclusion 
+     - monotonicité 
+1. Selon vous, est-ce que l'approche est convaincante?
+1. Comment interprétez-vous les résultats présentés dans cet article?
+
+# Analyse d'une deuxième étude publiée
+
+Considérez l'article suivant: ["Electoral Backlash against Climate Policy: A Natural Experiment on Retrospective Voting and Local Resistance to Public Policy"](https://onlinelibrary.wiley.com/doi/full/10.1111/ajps.12220) (Stokes, _American Journal of Political Science_, 2015) pour répondre aux questions suivantes.
+
+Téléchargez les données de cet article et inspectez les variables qui nous intéressent:
+
+- `chng_lib`: Différence entre le pourcentage de vote pour les Libéraux en 2011 et en 2007. (variable dépendante)
+- `prop_3km`: Variable binaire indiquant s'il y a une proposition de turbine dans les 3km dans la dernière année (1 = oui, 0 = non). (variable indépendante)
+- `avg_pwr_log`: Vitesse moyenne du vent dans ce district (log). (variable instrumentale)
+- `mindistlake`: Plus courte distance entre n'importe quel point dans ce district et les grands lacs. (variable contrôle)
+- `mindistlake_sq`: Plus courte distance entre n'importe quel point dans ce district et les grands lacs (au carré). (variable contrôle)
+- `longitude`: Longitude du point central du district. (variable contrôle)
+- `long_sq`: Longitude du point central du district (au carré). (variable contrôle)
+- `latitude`: Latitude du point central du district. (variable contrôle)
+- `lat_sq`: Latitude du point central du district (au carré). (variable contrôle)
+- `long_lat`: Longitude*Latitude. (variable contrôle)
+- `ed_id`: Identifiant du district. (pour estimer des effets fixes, utilisez: `as.factor(ed_id)`)
+
+Répondez aux questions suivantes:
+
+1. Quelle est la relation causale qui intéresse l'auteure?
+1. Décrivez brièvement la méthode par variable instrumentale exploitée par l'auteure de cet article.
+1. Comment l'auteure justifie-t-elle que la validité de son instrument?
+    - Inclusion
+    - Exclusion
+    - Monotonicité
+1. Selon vous, est-ce que son approche est convaincante?
+1. Les données et fichiers de réplication de cette étude sont disponibles en ligne. Suivez les étapes suivantes pour reproduire les résultats du tableau 2. 
+    - Lisez les données dans `R`.
+    - Estimez le modèle de régression par variable instrumentale à l'aide de la fonction `ivreg()`. Cela correspond à la colonne 2 du tableau 2. N'oubliez pas d'inclure toutes les variables de contrôle ainsi que les effets fixes pour chaque district (i.e., `+factor(ed_id)`).^[Astuce: dans la fonction `ivreg()`, les variables de contrôle doivent être inclues dans les deux étapes de régression, soit des deux côtés de la barre verticale dans la commande `ivreg`.]
+    - Présentez les résultats dans un tableau de régression. Est-ce que vous avez réussi à répliquer exactement les résultats originaux?
+1. Quels sont les résultats principaux de l'auteure?
+
+# Analyse d'une étude publiée au choix.
+
+Choisissez un article scientifique de la discipline de votre choix pour répondre aux questions suivantes:
+
+1. Quelle est la relation causale qui intéresse les auteurs?
+2. Décrivez brièvement la méthode par variable instrumentale exploitée par les auteurs de cet article. 
+3. Comment les auteurs justifie-t-il que les postulats de l'inclusion, de l'exclusion et de la monotonicité sont respectés et que son instrument est donc valide? Est-ce que l'approche est convaincante?
+4. Quels sont les résultats principaux de les auteurs?

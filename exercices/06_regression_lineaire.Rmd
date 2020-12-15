@@ -1,0 +1,169 @@
+---
+title: "Régression linéaire"
+author: "MATRICULE"
+output: 
+    pdf_document:
+          latex_engine: xelatex
+---
+
+# Modèle linéaire 
+
+Considérez le modèle suivant: 
+
+\begin{align*}
+Y = 10 + 2X_1 - 1X_2
+\end{align*}
+
+
+Quelles sont les valeurs de $Y$ dans les situations suivantes:
+
+1. $X_1=0; X_2=0$
+1. $X_1=0; X_2=1$
+1. $X_1=0; X_2=2$
+1. $X_1=1; X_2=2$
+1. $X_1=4; X_2=5$
+
+Quelle augmentation anticipez-vous dans $Y$ lorsque:
+
+1. $X_1=3$ et $X_2$ augmente d'une unité.
+1. $X_1=10$ et $X_2$ augmente d'une unité.
+
+Quelle est la dérivée partielle de $Y$ par rapport à $X_1$?
+
+Quel est le changement anticipé dans $Y$ lorsque: 
+
+1. $X_1=4$ et $X_2$ passe de 2,5 à 5,5.
+1. $X_1=6$ et $X_2$ passe de 2,5 à 5,5.
+
+Quelle est la dérivée partielle de $Y$ par rapport à $X_2$?
+
+# Degrés de liberté
+
+Considérez les trois relations suivantes: 
+
+\begin{align*}
+Y &= \beta_0 + \beta_1 Z_1 + \beta_2 Z_2 && \mbox{Modèle} \\
+2 &= \beta_0 + \beta_1 \cdot 0 + \beta_2 \cdot 0 && \mbox{Obs 1} \\
+2.75 &= \beta_0 + \beta_1 \cdot 0 + \beta_2 \cdot 1 && \mbox{Obs 2} \\
+5.5 &= \beta_0 + \beta_1 \cdot 2 + \beta_2 \cdot 2 && \mbox{Obs 3} \\
+\end{align*}
+
+Estimez les valeurs de:
+
+1. $\beta_0$ 
+1. $\beta_1$
+1. $\beta_2$ 
+
+# Changement dans la valeur explicative
+
+* Imaginez que manipuler $Z_1$ de une unité coûte 2\$, et que manipuler $Z_2$ de une unité coûte 1\$. Si vous voulez augmenter $Y$ de 3 unités, quelle variable allez-vous manipuler, et par combien d'unités?  Justifiez votre réponse en référence à l'équation que vous avez obtenue dans la question précédente.
+
+# Représenter une théorie à l'aide d'une équation linéaire #1
+
+Le score moyen d'une classe de sixième année dans un test de lecture est associé au nombre d'élèves, au salaire de l'enseignant, et à la moyenne des années de scolarité des parents.
+
+1. Exprimez cette relation par une équation linéaire.
+1. En tant que membre du comité exécutif de l'école, que voudriez-vous savoir avant de décider comment vous allez allouer le budget?
+
+# Représenter une théorie à l'aide d'une équation linéaire #2
+
+Considérez cette mise en situation:
+
+> L'intensité du conflit entre deux pays, mesurée par le nombre de morts au combat lors d'une certaine année, est positivement associée au nombre de kilomètres de frontières communes, et négativement associée à l'homogénéité ethnique des deux pays et au volume de commerce entre les deux pays. Dans les régimes démocratiques, par contre, nous nous attendons à ce que l'effet de la frontière commune soit nul. 
+
+Comment représenteriez vous ces hypothèses? Quels sont les signes attendus des coefficients de régression? 
+
+1. Écrivez précisément les deux équations nécessaires pour exprimer ces propositions. (Notez que si vos deux équations partagent un même paramêtre, (e.g., $\beta_1$), cela signifie que la valeur de ce paramètre est exactement la même dans les deux modèles/échantillons. Est-ce que ce serait raisonnable ici?)
+
+1. Expliquez votre choix d'équations et comment elles expriment les propositions verbales.
+
+# Régression linéaire #1
+
+La banque de données du projet _Quality of Governance_ comprends plusieurs variables concernant la qualité des institutions de gouvernance dans la plupart des pays du monde. Parmi ces variables, on compte: 
+
+* `cname`: Nom du pays 
+* `bti_ci`: Intensité des conflits sociaux, ethniques et religieux.  Cette variable est codée sur une échelle de 1 à 10, indiquant: 
+    + 1. Il n'y a pas d'incidents violents basé sur les différences sociales, ethniques ou religiieuses.
+    + 4. Il y a quelques incidents violents. Les acteurs politiques radicaux ne réussissent pas à se mobiliser, mais les élites sociétales et politiques sont divisées selon les clivages sociaux, ethniques ou religieux.
+    + 7. Il y a des incidents violents. Les groupes radicaux mobilisés et les mouvements protestataires dominent la politique. Les élites politiques et sociétales sont hautement divisées entre les différentes communautés ou classes sociales, ethniques ou religieuses.
+    + 10. Il y a une guerre civile ou un conflit violent répandu basé sur les différences sociales, ethniques ou religieuses.
+* `al_ethnic`: Fractionalisation ethnique
+    - La probabilité que deux personnes prises au hasard appartiennent au même groupe linguistiqque ou racial. Plus le nombre est haut, plus le pays est fractionnalisé. 
+* `dr_eg`: Mondialisation économique
+    - Niveau d'ouverture des échanges commerciaux et financiers avec le reste du monde.
+    - Échelle de 1 à 100. 
+* `fh_ipolity2`: Niveau de démocratie
+    - Échelle de 1 à 10 (0 = moins démocratique, 10 = plus démocratique). 
+
+## Étapes préparatoires
+
+Suivez les étapes préparatoires suivantes:
+
+1. Importez ces données dans `R` avec la fonction `read.csv`.
+2. Choisissez les cinq variables et laissez tomber les autres avec la fonction `select` du `tidyverse`.
+3. Calculez des statistiques pour décrire les 4 variables numériques.
+
+## Spécification
+
+Écrivez l'équation d'un modèle de régression linéaire qui permet de modéliser le niveau de conflit dans un pays en fonction de (a) la fractionalisation ethnique, (b) le niveau d'ouverture aux marchés, et (c) le niveau de démocratie.
+
+## Estimation et interprétation
+
+Estimez ce modèle et interprétez les quantités suivantes:
+
+1. les coefficients ; faites référence à l'échelle de mesure des variables indépendantes et dépendante.
+1. l'erreur-type; cette statistique mesure l'incertitude vis-à-vis quoi?
+1. la statistique $t$; quelle est la relation mathématique entre $t$, l'erreur-type, et le coefficient?
+1. la valeur $p$; à quelle question est-ce que cette valeur nous permet de répondre?
+1. l'intervalle de confiance; comment est-ce qu'on l'interprète?
+
+
+# Régression linéaire #2
+
+Importez la banque de données d'André-Michel Guerry dans `R`:
+
+```{r}
+url <- 'http://vincentarelbundock.github.io/Rdatasets/csv/HistData/Guerry.csv'
+dat <- read.csv(url)
+```
+
+## Estimez le modèle suivant:
+
+```{r}
+mod <- lm(Literacy ~ Wealth, data=dat)
+```
+
+* Écrivez l'équation de régression qui correspond au modèle estimé.
+* Présenter les résultats dans un tableau à l'aide de la librairie `modelsummary`.
+
+Pour extraire le coefficient de la variable `Wealth`, nous pouvons utiliser la fonction `coef`:
+
+```{r}
+b <- coef(mod)['Wealth']
+```
+
+Pour extraire la variation échantillonale, nous pouvons utiliser les fonctions `diag` et `vcov`:
+
+```{r}
+variation_echantillonale <- diag(vcov(mod))['Wealth']
+```
+
+Montrez comment calculer les quantités suivantes *manuellement* avec `R`: 
+
+* Nombre de degrés de liberté
+* Erreur type
+* Statistique t
+* Valeur p
+* Intervalle de confiance à 95%
+
+Les commandes complètes et les résultats doivent apparaitrent dans votre devoir. Utilisez seulement des opérations arithmétiques, et les commandes `sqrt`, `pt`, `qt`, et `nrow`.
+
+Montrez que les résultats obtenus sont *identiques* à ceux produits par les fonctions `summary` et `confint`.
+
+Interprétez en mots: 
+
+1. le coefficient de `Wealth`; faites référence à l'échelle de `Wealth` et à l'échelle de la variable dépendante (Codebook: \url{https://vincentarelbundock.github.io/Rdatasets/datasets.html}).
+1. l'erreur-type; cette statistique mesure l'incertitude vis-à-vis de quoi?
+1. la statistique $t$; quelle est la relation mathématique entre $t$, l'erreur-type, et le coefficient?
+1. la statistique $p$; à quelle question est-ce que cette statistique nous permet de répondre?
+1. l'intervalle de confiance; comment est-ce qu'on l'interprète?
