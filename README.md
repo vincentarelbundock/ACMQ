@@ -1,4 +1,25 @@
-# acmq: Analyse Causale et Méthodes Quantitatives
+# Analyse Causale et Méthodes Quantitatives
+
+### Vincent Arel-Bundock
+
+Cette librairie `R` et page Github accompagnent le livre "Analyse Causale et Méthodes Quantitatives." Ce livre est [disponible gratuitement en version électronique](http://arelbundock.com/acmq.html) et à prix raisonnable [en format papier](https://www.renaud-bray.com/Livres_Produit.aspx?id=3319599&def=M%c3%a9thodes+quantitatives+et+analyse+causale%2cAREL-BUNDOCK%2c+VINCENT%2c9782760643215) (les redevances seront versées à une [OSBL](http://www.nwsm.info/)).
+
+Ressources:
+
+* [Table des matières et description du livre](http://arelbundock.com/acmq.html)
+* [Diapos](https://github.com/vincentarelbundock/ACMQ/tree/master/diapos)
+* [Exercices](https://github.com/vincentarelbundock/ACMQ/tree/master/exercices)
+* [Capsules vidéos sur Youtube (13 heures)](https://youtube.com/playlist?list=PLwV5Cyu4EJ1BviLt-nWJFSTjW30Tawv2R)
+
+Les Presses de l'Université de Montréal décrivent le livre ainsi:
+
+> Ce livre offre une introduction intégrée à la théorie de l’analyse causale et aux méthodes quantitatives qui permettent d’évaluer les relations de cause à effet en sciences sociales. Il présente les outils classiques de l’analyse descriptive (visualisation, probabilités, statistiques descriptives, inférence statistique et régression linéaire), les cadres théoriques qui facilitent le saut entre description et causalité (modèle Neyman-Rubin et graphes orientés acycliques), les défis de l’inférence causale (biais par variable omise, de sélection, de mesure et de simultanéité) ainsi que les stratégies pour les déjouer. Les exemples tirés de plusieurs disciplines en sciences sociales sont accompagnés de syntaxes informatiques com-plètes pour R, Stata et SPSS, et des annexes de mathématiques et de statistiques viennent ici soutenir les explications données.
+
+![](https://github.com/vincentarelbundock/ACMQ/blob/master/diapos/acmq_couverture.png)
+
+Le reste de cette page explique comment utiliser le tutoriel interactif qui accompagne le livre.
+ 
+# Tutoriel interactif sur le logiciel `R`
 
 Ce tutoriel pour le logiciel `R` accompagne le livre *Analyse Causale et Méthodes Quantitatives* de Vincent Arel-Bundock. Pour commencer le tutoriel, il devez:
 
