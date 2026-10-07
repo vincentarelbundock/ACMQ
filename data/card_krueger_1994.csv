@@ -1,0 +1,795 @@
+etat,emplois,periode,salaire_minimum
+Pennsylvania,40.5,0,0
+Pennsylvania,13.75,0,0
+Pennsylvania,8.5,0,0
+Pennsylvania,34,0,0
+Pennsylvania,24,0,0
+Pennsylvania,20.5,0,0
+Pennsylvania,70.5,0,0
+Pennsylvania,23.5,0,0
+Pennsylvania,11,0,0
+Pennsylvania,9,0,0
+Pennsylvania,15.5,0,0
+Pennsylvania,58,0,0
+Pennsylvania,26.5,0,0
+Pennsylvania,28.5,0,0
+Pennsylvania,13.5,0,0
+Pennsylvania,16.75,0,0
+Pennsylvania,9.5,0,0
+Pennsylvania,15,0,0
+Pennsylvania,29.5,0,0
+Pennsylvania,18.5,0,0
+Pennsylvania,20.25,0,0
+Pennsylvania,36,0,0
+Pennsylvania,21,0,0
+Pennsylvania,20.5,0,0
+Pennsylvania,19,0,0
+Pennsylvania,14,0,0
+Pennsylvania,19,0,0
+Pennsylvania,32.5,0,0
+Pennsylvania,19,0,0
+Pennsylvania,27,0,0
+Pennsylvania,19.5,0,0
+Pennsylvania,24,0,0
+Pennsylvania,18,0,0
+Pennsylvania,19,0,0
+Pennsylvania,14,0,0
+Pennsylvania,10.5,0,0
+Pennsylvania,38,0,0
+Pennsylvania,23.5,0,0
+Pennsylvania,10.5,0,0
+Pennsylvania,25,0,0
+Pennsylvania,11,0,0
+Pennsylvania,36.5,0,0
+Pennsylvania,52.5,0,0
+Pennsylvania,29,0,0
+Pennsylvania,45,0,0
+Pennsylvania,22.75,0,0
+Pennsylvania,7.5,0,0
+Pennsylvania,15.5,0,0
+Pennsylvania,38,0,0
+Pennsylvania,17.5,0,0
+Pennsylvania,25,0,0
+Pennsylvania,21,0,0
+Pennsylvania,15.5,0,0
+Pennsylvania,15.5,0,0
+Pennsylvania,8.5,0,0
+Pennsylvania,18,0,0
+Pennsylvania,20.75,0,0
+Pennsylvania,39,0,0
+Pennsylvania,41.5,0,0
+Pennsylvania,22.5,0,0
+Pennsylvania,32,0,0
+Pennsylvania,24,0,0
+Pennsylvania,26,0,0
+Pennsylvania,48.5,0,0
+Pennsylvania,8.5,0,0
+Pennsylvania,18.5,0,0
+Pennsylvania,13,0,0
+Pennsylvania,22.5,0,0
+Pennsylvania,28,0,0
+Pennsylvania,24.5,0,0
+Pennsylvania,18.5,0,0
+Pennsylvania,23.5,0,0
+Pennsylvania,15,0,0
+Pennsylvania,18,0,0
+Pennsylvania,20.25,0,0
+Pennsylvania,15.5,0,0
+Pennsylvania,21,0,0
+New Jersey,15,0,0
+New Jersey,15,0,0
+New Jersey,24,0,0
+New Jersey,19.25,0,0
+New Jersey,21.5,0,0
+New Jersey,9.5,0,0
+New Jersey,44,0,0
+New Jersey,21,0,0
+New Jersey,28,0,0
+New Jersey,10,0,0
+New Jersey,20.5,0,0
+New Jersey,25.5,0,0
+New Jersey,19,0,0
+New Jersey,16.5,0,0
+New Jersey,17,0,0
+New Jersey,27.5,0,0
+New Jersey,5,0,0
+New Jersey,16,0,0
+New Jersey,41.5,0,0
+New Jersey,13,0,0
+New Jersey,10,0,0
+New Jersey,15,0,0
+New Jersey,26,0,0
+New Jersey,18,0,0
+New Jersey,35,0,0
+New Jersey,21,0,0
+New Jersey,34.5,0,0
+New Jersey,18.25,0,0
+New Jersey,24.5,0,0
+New Jersey,20,0,0
+New Jersey,16,0,0
+New Jersey,17.5,0,0
+New Jersey,20.5,0,0
+New Jersey,20,0,0
+New Jersey,12.25,0,0
+New Jersey,33,0,0
+New Jersey,31.5,0,0
+New Jersey,18,0,0
+New Jersey,28,0,0
+New Jersey,16.5,0,0
+New Jersey,14.75,0,0
+New Jersey,23.5,0,0
+New Jersey,10,0,0
+New Jersey,46.5,0,0
+New Jersey,15.5,0,0
+New Jersey,24.5,0,0
+New Jersey,24,0,0
+New Jersey,23,0,0
+New Jersey,28,0,0
+New Jersey,32.5,0,0
+New Jersey,23,0,0
+New Jersey,17,0,0
+New Jersey,30,0,0
+New Jersey,21.5,0,0
+New Jersey,32,0,0
+New Jersey,8,0,0
+New Jersey,35.5,0,0
+New Jersey,31.5,0,0
+New Jersey,33,0,0
+New Jersey,22,0,0
+New Jersey,23,0,0
+New Jersey,23,0,0
+New Jersey,8.5,0,0
+New Jersey,12.5,0,0
+New Jersey,9.5,0,0
+New Jersey,13,0,0
+New Jersey,17,0,0
+New Jersey,9,0,0
+New Jersey,19,0,0
+New Jersey,11.5,0,0
+New Jersey,13,0,0
+New Jersey,48,0,0
+New Jersey,45.5,0,0
+New Jersey,15,0,0
+New Jersey,18,0,0
+New Jersey,21,0,0
+New Jersey,20.5,0,0
+New Jersey,20.5,0,0
+New Jersey,17.5,0,0
+New Jersey,27.5,0,0
+New Jersey,24,0,0
+New Jersey,34,0,0
+New Jersey,18,0,0
+New Jersey,24,0,0
+New Jersey,33.5,0,0
+New Jersey,12,0,0
+New Jersey,35,0,0
+New Jersey,35,0,0
+New Jersey,16,0,0
+New Jersey,15.5,0,0
+New Jersey,19,0,0
+New Jersey,24,0,0
+New Jersey,36,0,0
+New Jersey,29,0,0
+New Jersey,29,0,0
+New Jersey,21.25,0,0
+New Jersey,15.5,0,0
+New Jersey,19.5,0,0
+New Jersey,21,0,0
+New Jersey,14,0,0
+New Jersey,30.5,0,0
+New Jersey,23.5,0,0
+New Jersey,14,0,0
+New Jersey,14.5,0,0
+New Jersey,15.5,0,0
+New Jersey,26.5,0,0
+New Jersey,8,0,0
+New Jersey,5.5,0,0
+New Jersey,23.25,0,0
+New Jersey,15.5,0,0
+New Jersey,32.25,0,0
+New Jersey,30,0,0
+New Jersey,30.5,0,0
+New Jersey,14,0,0
+New Jersey,27,0,0
+New Jersey,18.5,0,0
+New Jersey,38,0,0
+New Jersey,16.5,0,0
+New Jersey,50,0,0
+New Jersey,20.5,0,0
+New Jersey,6.5,0,0
+New Jersey,13.5,0,0
+New Jersey,28,0,0
+New Jersey,21.5,0,0
+New Jersey,24,0,0
+New Jersey,20.5,0,0
+New Jersey,23.5,0,0
+New Jersey,23,0,0
+New Jersey,17,0,0
+New Jersey,20.5,0,0
+New Jersey,23.5,0,0
+New Jersey,9.5,0,0
+New Jersey,10,0,0
+New Jersey,14,0,0
+New Jersey,85,0,0
+New Jersey,15,0,0
+New Jersey,21.5,0,0
+New Jersey,53,0,0
+New Jersey,24,0,0
+New Jersey,20.5,0,0
+New Jersey,14.5,0,0
+New Jersey,25,0,0
+New Jersey,27,0,0
+New Jersey,22.5,0,0
+New Jersey,36.5,0,0
+New Jersey,17.25,0,0
+New Jersey,21.5,0,0
+New Jersey,24.5,0,0
+New Jersey,19,0,0
+New Jersey,25,0,0
+New Jersey,16,0,0
+New Jersey,19,0,0
+New Jersey,22.75,0,0
+New Jersey,35,0,0
+New Jersey,16,0,0
+New Jersey,21,0,0
+New Jersey,26.75,0,0
+New Jersey,30.5,0,0
+New Jersey,23,0,0
+New Jersey,21.5,0,0
+New Jersey,36.5,0,0
+New Jersey,23,0,0
+New Jersey,14,0,0
+New Jersey,17.25,0,0
+New Jersey,18.5,0,0
+New Jersey,8.5,0,0
+New Jersey,14,0,0
+New Jersey,23,0,0
+New Jersey,29,0,0
+New Jersey,19,0,0
+New Jersey,21,0,0
+New Jersey,17,0,0
+New Jersey,36,0,0
+New Jersey,25,0,0
+New Jersey,29.5,0,0
+New Jersey,22,0,0
+New Jersey,11,0,0
+New Jersey,13.5,0,0
+New Jersey,13.5,0,0
+New Jersey,18,0,0
+New Jersey,9.5,0,0
+New Jersey,24,0,0
+New Jersey,14.5,0,0
+New Jersey,29,0,0
+New Jersey,10.5,0,0
+New Jersey,18,0,0
+New Jersey,9,0,0
+New Jersey,33,0,0
+New Jersey,19.5,0,0
+New Jersey,41,0,0
+New Jersey,17,0,0
+New Jersey,18.25,0,0
+New Jersey,17,0,0
+New Jersey,32,0,0
+New Jersey,26,0,0
+New Jersey,11.5,0,0
+New Jersey,21,0,0
+New Jersey,22.75,0,0
+New Jersey,18.5,0,0
+New Jersey,20,0,0
+New Jersey,18,0,0
+New Jersey,10.5,0,0
+New Jersey,10.5,0,0
+New Jersey,11,0,0
+New Jersey,10.5,0,0
+New Jersey,12.5,0,0
+New Jersey,18,0,0
+New Jersey,17,0,0
+New Jersey,15,0,0
+New Jersey,19.5,0,0
+New Jersey,13,0,0
+New Jersey,20.25,0,0
+New Jersey,26,0,0
+New Jersey,15.5,0,0
+New Jersey,24,0,0
+New Jersey,25.5,0,0
+New Jersey,14.5,0,0
+New Jersey,21.5,0,0
+New Jersey,14,0,0
+New Jersey,20,0,0
+New Jersey,22.5,0,0
+New Jersey,30,0,0
+New Jersey,24,0,0
+New Jersey,22,0,0
+New Jersey,13,0,0
+New Jersey,5,0,0
+New Jersey,13.5,0,0
+New Jersey,28,0,0
+New Jersey,18,0,0
+New Jersey,24,0,0
+New Jersey,16.5,0,0
+New Jersey,7,0,0
+New Jersey,11,0,0
+New Jersey,19.5,0,0
+New Jersey,10,0,0
+New Jersey,13,0,0
+New Jersey,10,0,0
+New Jersey,12.5,0,0
+New Jersey,8,0,0
+New Jersey,12,0,0
+New Jersey,20.5,0,0
+New Jersey,18.5,0,0
+New Jersey,11.5,0,0
+New Jersey,15,0,0
+New Jersey,13,0,0
+New Jersey,10,0,0
+New Jersey,17,0,0
+New Jersey,17,0,0
+New Jersey,20.5,0,0
+New Jersey,15.5,0,0
+New Jersey,19.5,0,0
+New Jersey,30.5,0,0
+New Jersey,23,0,0
+New Jersey,13,0,0
+New Jersey,30.25,0,0
+New Jersey,18,0,0
+New Jersey,10,0,0
+New Jersey,19.5,0,0
+New Jersey,17,0,0
+New Jersey,25.5,0,0
+New Jersey,6,0,0
+New Jersey,11.5,0,0
+New Jersey,8.5,0,0
+New Jersey,18.5,0,0
+New Jersey,15.5,0,0
+New Jersey,14.25,0,0
+New Jersey,38,0,0
+New Jersey,24.75,0,0
+New Jersey,23,0,0
+New Jersey,24,0,0
+New Jersey,7.5,0,0
+New Jersey,15,0,0
+New Jersey,9.25,0,0
+New Jersey,11.25,0,0
+New Jersey,16.5,0,0
+New Jersey,18.75,0,0
+New Jersey,13.5,0,0
+New Jersey,21.75,0,0
+New Jersey,13.5,0,0
+New Jersey,15,0,0
+New Jersey,17.5,0,0
+New Jersey,17.5,0,0
+New Jersey,15.5,0,0
+New Jersey,16.5,0,0
+New Jersey,13.5,0,0
+New Jersey,13,0,0
+New Jersey,11.5,0,0
+New Jersey,29.05,0,0
+New Jersey,13,0,0
+New Jersey,18,0,0
+New Jersey,30,0,0
+New Jersey,20.5,0,0
+New Jersey,10,0,0
+New Jersey,26,0,0
+New Jersey,12.5,0,0
+New Jersey,19.5,0,0
+New Jersey,12,0,0
+New Jersey,36,0,0
+New Jersey,21,0,0
+New Jersey,24.5,0,0
+New Jersey,20,0,0
+New Jersey,26.5,0,0
+New Jersey,15,0,0
+New Jersey,19,0,0
+New Jersey,17.5,0,0
+New Jersey,20.5,0,0
+New Jersey,21,0,0
+New Jersey,10.5,0,0
+New Jersey,23,0,0
+New Jersey,23,0,0
+New Jersey,29,0,0
+New Jersey,21,0,0
+New Jersey,41.5,0,0
+New Jersey,12,0,0
+New Jersey,33,0,0
+New Jersey,6.5,0,0
+New Jersey,9,0,0
+New Jersey,9.75,0,0
+New Jersey,24.5,0,0
+New Jersey,14,0,0
+New Jersey,19.5,0,0
+Pennsylvania,24,1,0
+Pennsylvania,11.5,1,0
+Pennsylvania,10.5,1,0
+Pennsylvania,20,1,0
+Pennsylvania,35.5,1,0
+Pennsylvania,29,1,0
+Pennsylvania,36.5,1,0
+Pennsylvania,11,1,0
+Pennsylvania,8.5,1,0
+Pennsylvania,17.5,1,0
+Pennsylvania,29,1,0
+Pennsylvania,30.5,1,0
+Pennsylvania,26,1,0
+Pennsylvania,18,1,0
+Pennsylvania,20,1,0
+Pennsylvania,13.5,1,0
+Pennsylvania,19,1,0
+Pennsylvania,15.5,1,0
+Pennsylvania,14.5,1,0
+Pennsylvania,14,1,0
+Pennsylvania,19,1,0
+Pennsylvania,21,1,0
+Pennsylvania,18,1,0
+Pennsylvania,20.5,1,0
+Pennsylvania,13.5,1,0
+Pennsylvania,17.5,1,0
+Pennsylvania,25.5,1,0
+Pennsylvania,15.5,1,0
+Pennsylvania,25.5,1,0
+Pennsylvania,27,1,0
+Pennsylvania,16,1,0
+Pennsylvania,19,1,0
+Pennsylvania,24.5,1,0
+Pennsylvania,25,1,0
+Pennsylvania,17,1,0
+Pennsylvania,16.5,1,0
+Pennsylvania,20,1,0
+Pennsylvania,18,1,0
+Pennsylvania,12,1,0
+Pennsylvania,25,1,0
+Pennsylvania,11,1,0
+Pennsylvania,27,1,0
+Pennsylvania,34,1,0
+Pennsylvania,25,1,0
+Pennsylvania,37.5,1,0
+Pennsylvania,21,1,0
+Pennsylvania,9.5,1,0
+Pennsylvania,18,1,0
+Pennsylvania,18,1,0
+Pennsylvania,19,1,0
+Pennsylvania,31.5,1,0
+Pennsylvania,23,1,0
+Pennsylvania,24.5,1,0
+Pennsylvania,27.5,1,0
+Pennsylvania,34.5,1,0
+Pennsylvania,14,1,0
+Pennsylvania,15,1,0
+Pennsylvania,23,1,0
+Pennsylvania,26.5,1,0
+Pennsylvania,23.5,1,0
+Pennsylvania,35.5,1,0
+Pennsylvania,21,1,0
+Pennsylvania,23,1,0
+Pennsylvania,20,1,0
+Pennsylvania,27,1,0
+Pennsylvania,13,1,0
+Pennsylvania,0,1,0
+Pennsylvania,13.5,1,0
+Pennsylvania,26.75,1,0
+Pennsylvania,43.5,1,0
+Pennsylvania,41.25,1,0
+Pennsylvania,14.25,1,0
+Pennsylvania,12.5,1,0
+Pennsylvania,34,1,0
+Pennsylvania,10,1,0
+Pennsylvania,14,1,0
+Pennsylvania,17.5,1,0
+New Jersey,27,1,1
+New Jersey,21.5,1,1
+New Jersey,23,1,1
+New Jersey,21.5,1,1
+New Jersey,34.5,1,1
+New Jersey,10.5,1,1
+New Jersey,16.5,1,1
+New Jersey,23,1,1
+New Jersey,38,1,1
+New Jersey,36,1,1
+New Jersey,16,1,1
+New Jersey,20.5,1,1
+New Jersey,19,1,1
+New Jersey,53,1,1
+New Jersey,16.5,1,1
+New Jersey,16.5,1,1
+New Jersey,45,1,1
+New Jersey,8,1,1
+New Jersey,15.5,1,1
+New Jersey,24,1,1
+New Jersey,7.5,1,1
+New Jersey,7.5,1,1
+New Jersey,18.5,1,1
+New Jersey,16.5,1,1
+New Jersey,33.5,1,1
+New Jersey,37,1,1
+New Jersey,18,1,1
+New Jersey,26.5,1,1
+New Jersey,33,1,1
+New Jersey,20.5,1,1
+New Jersey,24.5,1,1
+New Jersey,16,1,1
+New Jersey,23.5,1,1
+New Jersey,13,1,1
+New Jersey,20,1,1
+New Jersey,22,1,1
+New Jersey,28.5,1,1
+New Jersey,25.5,1,1
+New Jersey,18,1,1
+New Jersey,9,1,1
+New Jersey,26.5,1,1
+New Jersey,0,1,1
+New Jersey,23.75,1,1
+New Jersey,18,1,1
+New Jersey,36,1,1
+New Jersey,21,1,1
+New Jersey,15.5,1,1
+New Jersey,22.5,1,1
+New Jersey,27,1,1
+New Jersey,34,1,1
+New Jersey,16.75,1,1
+New Jersey,26,1,1
+New Jersey,18,1,1
+New Jersey,20.5,1,1
+New Jersey,15,1,1
+New Jersey,25.5,1,1
+New Jersey,20,1,1
+New Jersey,18,1,1
+New Jersey,26.5,1,1
+New Jersey,23.25,1,1
+New Jersey,10.5,1,1
+New Jersey,12,1,1
+New Jersey,9.5,1,1
+New Jersey,15.5,1,1
+New Jersey,14.5,1,1
+New Jersey,14,1,1
+New Jersey,6.5,1,1
+New Jersey,10,1,1
+New Jersey,11.5,1,1
+New Jersey,46.5,1,1
+New Jersey,26.5,1,1
+New Jersey,16,1,1
+New Jersey,13,1,1
+New Jersey,14,1,1
+New Jersey,15.5,1,1
+New Jersey,18,1,1
+New Jersey,27,1,1
+New Jersey,27,1,1
+New Jersey,29.5,1,1
+New Jersey,16.5,1,1
+New Jersey,31.5,1,1
+New Jersey,27.5,1,1
+New Jersey,25.5,1,1
+New Jersey,32,1,1
+New Jersey,14.5,1,1
+New Jersey,10.5,1,1
+New Jersey,44,1,1
+New Jersey,15.5,1,1
+New Jersey,10.5,1,1
+New Jersey,24,1,1
+New Jersey,29,1,1
+New Jersey,30.5,1,1
+New Jersey,20,1,1
+New Jersey,26.5,1,1
+New Jersey,27,1,1
+New Jersey,26.5,1,1
+New Jersey,10.5,1,1
+New Jersey,18,1,1
+New Jersey,18.5,1,1
+New Jersey,25.5,1,1
+New Jersey,32,1,1
+New Jersey,33,1,1
+New Jersey,7.5,1,1
+New Jersey,12.5,1,1
+New Jersey,24,1,1
+New Jersey,29,1,1
+New Jersey,10,1,1
+New Jersey,9.5,1,1
+New Jersey,17.5,1,1
+New Jersey,17.5,1,1
+New Jersey,25,1,1
+New Jersey,26,1,1
+New Jersey,24,1,1
+New Jersey,22.5,1,1
+New Jersey,35,1,1
+New Jersey,17.75,1,1
+New Jersey,24.5,1,1
+New Jersey,16.5,1,1
+New Jersey,30,1,1
+New Jersey,39,1,1
+New Jersey,17,1,1
+New Jersey,12.5,1,1
+New Jersey,38.5,1,1
+New Jersey,20,1,1
+New Jersey,21,1,1
+New Jersey,32,1,1
+New Jersey,19,1,1
+New Jersey,20,1,1
+New Jersey,26.5,1,1
+New Jersey,19,1,1
+New Jersey,20,1,1
+New Jersey,22.5,1,1
+New Jersey,10,1,1
+New Jersey,12.5,1,1
+New Jersey,11,1,1
+New Jersey,12.5,1,1
+New Jersey,59,1,1
+New Jersey,19,1,1
+New Jersey,15.5,1,1
+New Jersey,19,1,1
+New Jersey,26.5,1,1
+New Jersey,17.5,1,1
+New Jersey,20.5,1,1
+New Jersey,28,1,1
+New Jersey,30.25,1,1
+New Jersey,44,1,1
+New Jersey,17.5,1,1
+New Jersey,31,1,1
+New Jersey,31,1,1
+New Jersey,28.5,1,1
+New Jersey,19,1,1
+New Jersey,41,1,1
+New Jersey,28,1,1
+New Jersey,9.5,1,1
+New Jersey,25,1,1
+New Jersey,28,1,1
+New Jersey,16,1,1
+New Jersey,22.75,1,1
+New Jersey,32,1,1
+New Jersey,27.5,1,1
+New Jersey,25.5,1,1
+New Jersey,60.5,1,1
+New Jersey,20.5,1,1
+New Jersey,16,1,1
+New Jersey,25,1,1
+New Jersey,13,1,1
+New Jersey,9,1,1
+New Jersey,16.5,1,1
+New Jersey,21,1,1
+New Jersey,21.5,1,1
+New Jersey,20,1,1
+New Jersey,21.25,1,1
+New Jersey,21.5,1,1
+New Jersey,31,1,1
+New Jersey,33,1,1
+New Jersey,37.75,1,1
+New Jersey,9,1,1
+New Jersey,11,1,1
+New Jersey,12.75,1,1
+New Jersey,10.5,1,1
+New Jersey,22,1,1
+New Jersey,8,1,1
+New Jersey,25,1,1
+New Jersey,12.5,1,1
+New Jersey,22.5,1,1
+New Jersey,11.5,1,1
+New Jersey,23.5,1,1
+New Jersey,30,1,1
+New Jersey,16.5,1,1
+New Jersey,29,1,1
+New Jersey,30,1,1
+New Jersey,22.5,1,1
+New Jersey,24,1,1
+New Jersey,21.75,1,1
+New Jersey,13.5,1,1
+New Jersey,24,1,1
+New Jersey,28.5,1,1
+New Jersey,10,1,1
+New Jersey,23.5,1,1
+New Jersey,30.5,1,1
+New Jersey,24.75,1,1
+New Jersey,22.5,1,1
+New Jersey,28,1,1
+New Jersey,14,1,1
+New Jersey,9,1,1
+New Jersey,9.5,1,1
+New Jersey,15.5,1,1
+New Jersey,12,1,1
+New Jersey,11.5,1,1
+New Jersey,12.5,1,1
+New Jersey,16,1,1
+New Jersey,28.5,1,1
+New Jersey,15,1,1
+New Jersey,23.5,1,1
+New Jersey,30.5,1,1
+New Jersey,26.5,1,1
+New Jersey,27,1,1
+New Jersey,21.5,1,1
+New Jersey,21.5,1,1
+New Jersey,37.5,1,1
+New Jersey,11.5,1,1
+New Jersey,21,1,1
+New Jersey,28,1,1
+New Jersey,24,1,1
+New Jersey,23,1,1
+New Jersey,19,1,1
+New Jersey,7,1,1
+New Jersey,14,1,1
+New Jersey,32,1,1
+New Jersey,22,1,1
+New Jersey,14.25,1,1
+New Jersey,16.5,1,1
+New Jersey,0,1,1
+New Jersey,47.5,1,1
+New Jersey,15.5,1,1
+New Jersey,10.5,1,1
+New Jersey,7,1,1
+New Jersey,11,1,1
+New Jersey,8.5,1,1
+New Jersey,0,1,1
+New Jersey,15,1,1
+New Jersey,13.5,1,1
+New Jersey,12.5,1,1
+New Jersey,12.5,1,1
+New Jersey,12.5,1,1
+New Jersey,10,1,1
+New Jersey,13.5,1,1
+New Jersey,16,1,1
+New Jersey,23.5,1,1
+New Jersey,34,1,1
+New Jersey,32.5,1,1
+New Jersey,21.5,1,1
+New Jersey,20,1,1
+New Jersey,43.5,1,1
+New Jersey,17.5,1,1
+New Jersey,7,1,1
+New Jersey,22,1,1
+New Jersey,22,1,1
+New Jersey,7,1,1
+New Jersey,14,1,1
+New Jersey,27,1,1
+New Jersey,18.5,1,1
+New Jersey,11.5,1,1
+New Jersey,16,1,1
+New Jersey,25,1,1
+New Jersey,30.5,1,1
+New Jersey,11.5,1,1
+New Jersey,25.5,1,1
+New Jersey,9.5,1,1
+New Jersey,11.5,1,1
+New Jersey,12,1,1
+New Jersey,0,1,1
+New Jersey,17,1,1
+New Jersey,24,1,1
+New Jersey,13.5,1,1
+New Jersey,17,1,1
+New Jersey,28,1,1
+New Jersey,21.5,1,1
+New Jersey,30,1,1
+New Jersey,19.5,1,1
+New Jersey,20,1,1
+New Jersey,14.5,1,1
+New Jersey,14.5,1,1
+New Jersey,0,1,1
+New Jersey,31.5,1,1
+New Jersey,11.5,1,1
+New Jersey,20,1,1
+New Jersey,34,1,1
+New Jersey,25,1,1
+New Jersey,10,1,1
+New Jersey,18,1,1
+New Jersey,25,1,1
+New Jersey,23,1,1
+New Jersey,17.5,1,1
+New Jersey,23,1,1
+New Jersey,26,1,1
+New Jersey,16.5,1,1
+New Jersey,35.5,1,1
+New Jersey,31,1,1
+New Jersey,23,1,1
+New Jersey,22.5,1,1
+New Jersey,21.5,1,1
+New Jersey,12,1,1
+New Jersey,20.5,1,1
+New Jersey,25,1,1
+New Jersey,8.5,1,1
+New Jersey,13,1,1
+New Jersey,21.5,1,1
+New Jersey,23,1,1
+New Jersey,25.5,1,1
+New Jersey,21.5,1,1
+New Jersey,9.5,1,1
+New Jersey,36.5,1,1
+New Jersey,16,1,1
+New Jersey,23.75,1,1
+New Jersey,17.5,1,1
+New Jersey,20.5,1,1
+New Jersey,20.5,1,1
+New Jersey,25,1,1
